@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://086y5r45su6x"]
+
+[ext_resource type="Script" uid="uid://cy67yg1ifx3v8" path="res://menus/main_menu.gd" id="1_8gy84"]
+
+[sub_resource type="GDScript" id="GDScript_kvqlu"]
+resource_name = "title_label"
+script/source = "@tool
+extends Label
+class_name ConfigNameLabel
+## Displays the value of `application/config/name`, set in project settings.
+
+const NO_NAME_STRING : String = \"Title\"
+
+@export var auto_update : bool = true
+
+func update_name_label():
+	var config_name : String = ProjectSettings.get_setting(\"application/config/name\", NO_NAME_STRING)
+	if config_name.is_empty():
+		config_name = NO_NAME_STRING
+	text = config_name
+
+func _ready():
+	if auto_update:
+		update_name_label()
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gy84")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="TitleContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 16
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/TitleContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Demo Lizard"
+script = SubResource("GDScript_kvqlu")
+
+[node name="ButtonsContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]

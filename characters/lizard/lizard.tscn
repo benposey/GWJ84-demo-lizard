@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnlt78rlubm56"]
+
+[ext_resource type="Script" uid="uid://b5ufdsqjjhvj5" path="res://characters/lizard/lizard.gd" id="1_3lx1n"]
+[ext_resource type="Texture2D" uid="uid://do1k3u6ds334j" path="res://assets/sprites/gex_full_body.png" id="1_kkcna"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwcra"]
+radius = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3lx1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_kkcna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wwcra")
