@@ -1,0 +1,216 @@
+[gd_scene load_steps=12 format=3 uid="uid://vhguvlrn5tsr"]
+
+[ext_resource type="Script" uid="uid://c2df7m0m65t3i" path="res://objects/box.gd" id="1_6ymvw"]
+[ext_resource type="Texture2D" uid="uid://ra7ppnbyg8hw" path="res://assets/sprites/box.png" id="1_bctmu"]
+[ext_resource type="Texture2D" uid="uid://dipqk2ko2261p" path="res://assets/sprites/box-destroyed.png" id="2_d7q48"]
+[ext_resource type="Texture2D" uid="uid://br8sbgo811fjy" path="res://assets/sprites/box-destroyed-centered-sheet.png" id="3_d7q48"]
+[ext_resource type="Material" uid="uid://gj6pj7gp8kb2" path="res://resources/debris_particles.tres" id="4_10rvk"]
+[ext_resource type="Material" uid="uid://cugcjwmwqme8w" path="res://resources/debris_long_particles.tres" id="6_mfu5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10rvk"]
+size = Vector2(14, 14)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bctmu"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Animation" id="Animation_6ymvw"]
+resource_name = "explode"
+length = 30.0
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxDestroyedSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxDestroyedSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DebrisParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DebrisLongParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mfu5d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxDestroyedSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxDestroyedSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DebrisParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DebrisLongParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uhvr"]
+_data = {
+&"RESET": SubResource("Animation_mfu5d"),
+&"explode": SubResource("Animation_6ymvw")
+}
+
+[node name="Box" type="RigidBody2D" groups=["destructable"]]
+gravity_scale = 0.0
+script = ExtResource("1_6ymvw")
+
+[node name="BoxSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bctmu")
+
+[node name="BoxDestroyedSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_d7q48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_10rvk")
+
+[node name="DebrisParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_bctmu")
+emitting = false
+amount = 6
+texture = ExtResource("3_d7q48")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.54
+fixed_fps = 60
+process_material = ExtResource("4_10rvk")
+
+[node name="DebrisLongParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_bctmu")
+emitting = false
+amount = 6
+texture = ExtResource("3_d7q48")
+lifetime = 30.0
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("6_mfu5d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4uhvr")
+}
