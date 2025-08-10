@@ -21,6 +21,7 @@ position = Vector2(36, -23)
 position = Vector2(-31, -41)
 
 [node name="Box3" parent="Objects" instance=ExtResource("2_yw643")]
+
 position = Vector2(-62, 58)
 
 [node name="Label" type="Label" parent="."]
