@@ -12,10 +12,10 @@ config_version=5
 
 config/name="Demo Lizard"
 config/version="0.0.1"
+config/tags=PackedStringArray("jam")
 run/main_scene="uid://086y5r45su6x"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
-config/tags=PackedStringArray("jam")
 
 [display]
 

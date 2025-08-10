@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr1c715r6bfo"]
+[gd_scene load_steps=3 format=3 uid="uid://dr1c715r6bfo"]
 
 [ext_resource type="PackedScene" uid="uid://dnlt78rlubm56" path="res://characters/lizard/lizard.tscn" id="1_i1vr1"]
+[ext_resource type="PackedScene" uid="uid://bsp1ou67kapi7" path="res://scenes/prototype/box.tscn" id="2_w1m8s"]
 
 [node name="Main" type="CanvasLayer"]
 
@@ -14,3 +15,6 @@ color = Color(0.755705, 0.756794, 0.680141, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_i1vr1")]
 position = Vector2(156, 84)
+
+[node name="Box" parent="." instance=ExtResource("2_w1m8s")]
+position = Vector2(99, 84)
