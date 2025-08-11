@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://i2mfct4onoo3"]
+
+[ext_resource type="Texture2D" uid="uid://c7j3tajgn5p7" path="res://assets/bg/zoompattern.png" id="1_exxvv"]
+[ext_resource type="PackedScene" uid="uid://b7wplqfop7hd7" path="res://characters/lizard/lizard_qte.tscn" id="1_h7kg2"]
+[ext_resource type="Shader" uid="uid://dp1hrnsthnvrh" path="res://scenes/prototype/level_end_qte.gdshader" id="1_k4lbd"]
+[ext_resource type="PackedScene" uid="uid://qn5cteq8u8oc" path="res://characters/lizard/button.tscn" id="2_g5dcm"]
+[ext_resource type="Script" uid="uid://bijqa4fhqt165" path="res://scenes/prototype/QTEInstructions.gd" id="5_weem4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_weem4"]
+shader = ExtResource("1_k4lbd")
+shader_parameter/SPEED = 1.0
+
+[node name="Level End QTE" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 125.0
+offset_top = 22.0
+offset_right = 197.0
+offset_bottom = 146.0
+color = Color(0.210101, 0.492857, 0.929054, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_weem4")
+offset_left = 106.0
+offset_top = 9.0
+offset_right = 426.0
+offset_bottom = 189.0
+scale = Vector2(0.369541, 2.60279)
+texture = ExtResource("1_exxvv")
+
+[node name="Node2D" parent="." instance=ExtResource("2_g5dcm")]
+position = Vector2(160, 100)
+frame_progress = 0.25608
+
+[node name="LizardQTE" parent="." instance=ExtResource("1_h7kg2")]
+position = Vector2(160, 86)
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 127.0
+offset_top = 129.0
+offset_right = 209.0
+offset_bottom = 141.0
+scale = Vector2(0.835848, 1.0396)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[shake rate=10.0 level=1
+ connected=1]Press Spacebar![/shake]"
+script = ExtResource("5_weem4")
