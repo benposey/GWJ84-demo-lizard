@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://086y5r45su6x"]
 
-[ext_resource type="Script" uid="uid://cy67yg1ifx3v8" path="res://menus/main_menu.gd" id="1_8gy84"]
+[ext_resource type="Script" uid="uid://cy67yg1ifx3v8" path="res://scenes/Menus/Main/main_menu.gd" id="1_8gy84"]
 
 [sub_resource type="GDScript" id="GDScript_kvqlu"]
 resource_name = "title_label"
