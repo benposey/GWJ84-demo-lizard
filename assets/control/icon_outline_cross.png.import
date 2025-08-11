@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://b2x0tdf3jg2m4"
-
-path="res://.godot/imported/couch.png-10df182683488e85d07cd2deb7ac55a3.ctex"
+uid="uid://df6wmc0vl55n1"
+path="res://.godot/imported/icon_outline_cross.png-6dfff5e5dd4b3e0fa23fef7d253605d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/couch.png"
-dest_files=["res://.godot/imported/couch.png-10df182683488e85d07cd2deb7ac55a3.ctex"]
+source_file="res://assets/control/icon_outline_cross.png"
+dest_files=["res://.godot/imported/icon_outline_cross.png-6dfff5e5dd4b3e0fa23fef7d253605d0.ctex"]
 
 [params]
 
