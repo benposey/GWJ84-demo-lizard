@@ -51,6 +51,6 @@ func _play_body_animation(animation_name: String):
 
 func _destroy_bodies_in_range():
 	for body in attack_area.get_overlapping_bodies():
-		if body.is_in_group("destructable"):
-			print(body)
+		if body is DestructObject:
+			#print(body)
 			body.destroy()
