@@ -465,6 +465,8 @@ z_index = 2
 
 [node name="Dust" type="AnimatedSprite2D" parent="SmallExplosion"]
 sprite_frames = SubResource("SpriteFrames_puqnl")
+frame = 5
+frame_progress = 1.0
 
 [node name="Trail1" type="AnimatedSprite2D" parent="SmallExplosion"]
 sprite_frames = SubResource("SpriteFrames_ngchv")
