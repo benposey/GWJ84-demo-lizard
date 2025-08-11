@@ -85,7 +85,7 @@ grab={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Objects"
-2d_physics/layer_3="Layer 3"
+2d_physics/layer_3="Walls"
 
 [rendering]
 
