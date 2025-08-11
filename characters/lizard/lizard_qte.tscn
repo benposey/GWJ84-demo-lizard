@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://b7wplqfop7hd7"]
+[gd_scene load_steps=7 format=3 uid="uid://b7wplqfop7hd7"]
 
-[node name="LizardQTE" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bfah4iww5l28c" path="res://assets/sprites/gex_jump/gex_jump.png" id="1_2vsaj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is6ia"]
+atlas = ExtResource("1_2vsaj")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajwny"]
+atlas = ExtResource("1_2vsaj")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmist"]
+atlas = ExtResource("1_2vsaj")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u21cj"]
+atlas = ExtResource("1_2vsaj")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjgxb"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is6ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajwny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmist")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u21cj")
+}],
+"loop": true,
+"name": &"lizard_jumping",
+"speed": 5.0
+}]
+
+[node name="LizardQTE" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_yjgxb")
+animation = &"lizard_jumping"
