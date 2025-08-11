@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=28 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dnlt78rlubm56" path="res://characters/lizard/lizard.tscn" id="12_au7bp"]
 [ext_resource type="PackedScene" uid="uid://vhguvlrn5tsr" path="res://objects/box.tscn" id="13_e7vmk"]
 [ext_resource type="Script" uid="uid://cqfgsm8rhla3t" path="res://scenes/Warehouse/point_counter.gd" id="14_h115g"]
+[ext_resource type="PackedScene" uid="uid://dumyj4mxjmng5" path="res://scenes/Menus/Pause/PauseMenu.tscn" id="15_112t3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5nfnw"]
 texture = ExtResource("2_h115g")
@@ -253,6 +254,7 @@ texture = ExtResource("11_fdhiv")
 sources/0 = SubResource("TileSetAtlasSource_rlg6r")
 
 [node name="Warehouse" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_ybp5e")
 
 [node name="LayerHolder" type="Node2D" parent="."]
@@ -310,3 +312,25 @@ offset_left = 9.0
 offset_right = 49.0
 offset_bottom = 40.0
 script = ExtResource("14_h115g")
+
+[node name="PauseButton" type="Button" parent="FixedUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -15.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "||"
+
+[node name="PauseMenu" parent="FixedUI" instance=ExtResource("15_112t3")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_right = 0.0
+
+[connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
