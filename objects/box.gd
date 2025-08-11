@@ -1,9 +1,10 @@
 class_name Box
-extends RigidBody2D
+extends DestructObject
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var small_explosion: Node2D = $SmallExplosion
 
+var POINT_VALUE = 100
 var is_destroyed: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +14,7 @@ func _ready() -> void:
 func destroy():
 	if !is_destroyed:
 		is_destroyed = true
+		Events.objects.object_destroyed.emit(POINT_VALUE)
 		animation_player.play("explode")
 		#play_small_explosion()
 		await(animation_player.animation_finished)

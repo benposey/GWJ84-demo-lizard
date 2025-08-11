@@ -1,0 +1,2 @@
+class_name DestructObject
+extends RigidBody2D
