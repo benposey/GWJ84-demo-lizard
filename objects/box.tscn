@@ -412,6 +412,7 @@ stream_2/stream = ExtResource("10_puqnl")
 stream_3/stream = ExtResource("11_njivx")
 
 [node name="Box" type="RigidBody2D" groups=["destructable"]]
+collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_6ymvw")
 
@@ -423,7 +424,6 @@ visible = false
 texture = ExtResource("2_d7q48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_10rvk")
 
 [node name="DebrisParticles" type="GPUParticles2D" parent="."]

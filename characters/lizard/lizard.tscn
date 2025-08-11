@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dnlt78rlubm56"]
+[gd_scene load_steps=30 format=3 uid="uid://dnlt78rlubm56"]
 
 [ext_resource type="Script" uid="uid://b5ufdsqjjhvj5" path="res://characters/lizard/lizard.gd" id="1_3lx1n"]
 [ext_resource type="Texture2D" uid="uid://do1k3u6ds334j" path="res://assets/sprites/gex_full_body.png" id="1_kkcna"]
@@ -219,6 +219,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngdne"]
+radius = 15.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gexxo"]
 atlas = ExtResource("3_wwcra")
 region = Rect2(0, 128, 32, 32)
@@ -252,23 +255,31 @@ shape = SubResource("CircleShape2D_wwcra")
 sprite_frames = SubResource("SpriteFrames_ngdne")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.222186
+frame_progress = 0.288512
 
 [node name="Tail" type="AnimatedSprite2D" parent="BodyParts"]
 sprite_frames = SubResource("SpriteFrames_dyhpg")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.495199
+frame_progress = 0.561529
 
 [node name="Body" type="AnimatedSprite2D" parent="BodyParts"]
 sprite_frames = SubResource("SpriteFrames_7gax4")
 animation = &"walk"
 autoplay = "idle"
 
-[node name="Arms" type="AnimatedSprite2D" parent="BodyParts"]
+[node name="Arms" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_13ekg")
 animation = &"attack1"
 autoplay = "idle"
+
+[node name="AttackArea" type="Area2D" parent="Arms" groups=["destructable"]]
+collision_mask = 2
+
+[node name="AttackCollision" type="CollisionShape2D" parent="Arms/AttackArea"]
+position = Vector2(11, 0)
+shape = SubResource("CircleShape2D_ngdne")
+debug_color = Color(0.808971, 0.358744, 0.539481, 0.42)
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3lx1n")
