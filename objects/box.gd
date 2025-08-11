@@ -12,7 +12,7 @@ func _ready() -> void:
 func destroy():
 	if !is_destroyed:
 		is_destroyed = true
-		Events.objects.object_destroyed.emit(point_value)
+		Events.objects.object_destroyed.emit(point_value, self.global_position)
 		animation_player.play("explode")
 		#play_small_explosion()
 		await(animation_player.animation_finished)
