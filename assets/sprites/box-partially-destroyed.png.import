@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://b2x0tdf3jg2m4"
-
-path="res://.godot/imported/couch.png-10df182683488e85d07cd2deb7ac55a3.ctex"
+uid="uid://ccyuvtv1qwwsv"
+path="res://.godot/imported/box-partially-destroyed.png-2a3af7183e0e82250381a7a9f33364fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/couch.png"
-dest_files=["res://.godot/imported/couch.png-10df182683488e85d07cd2deb7ac55a3.ctex"]
+source_file="res://assets/sprites/box-partially-destroyed.png"
+dest_files=["res://.godot/imported/box-partially-destroyed.png-2a3af7183e0e82250381a7a9f33364fc.ctex"]
 
 [params]
 

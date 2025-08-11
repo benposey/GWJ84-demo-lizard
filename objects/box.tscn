@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://vhguvlrn5tsr"]
+[gd_scene load_steps=45 format=3 uid="uid://vhguvlrn5tsr"]
 
 [ext_resource type="Script" uid="uid://c2df7m0m65t3i" path="res://objects/box.gd" id="1_6ymvw"]
 [ext_resource type="Texture2D" uid="uid://ra7ppnbyg8hw" path="res://assets/sprites/box.png" id="1_bctmu"]
@@ -11,6 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://l72pb0qd7nlo" path="res://assets/audio/wood-smash-3-170418.mp3" id="9_bnexv"]
 [ext_resource type="AudioStream" uid="uid://dfq31b4q75f5x" path="res://assets/audio/wood-smash-4-170420.mp3" id="10_puqnl"]
 [ext_resource type="AudioStream" uid="uid://bpikj77vvp462" path="res://assets/audio/wood-smash-5-170421.mp3" id="11_njivx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7tw32"]
+friction = 0.9
+rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10rvk"]
 size = Vector2(14, 14)
@@ -412,6 +416,10 @@ stream_2/stream = ExtResource("10_puqnl")
 stream_3/stream = ExtResource("11_njivx")
 
 [node name="Box" type="RigidBody2D" groups=["destructable"]]
+collision_layer = 2
+collision_mask = 7
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_7tw32")
 gravity_scale = 0.0
 script = ExtResource("1_6ymvw")
 
@@ -423,7 +431,6 @@ visible = false
 texture = ExtResource("2_d7q48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_10rvk")
 
 [node name="DebrisParticles" type="GPUParticles2D" parent="."]

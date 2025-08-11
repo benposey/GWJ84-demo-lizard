@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://b2x0tdf3jg2m4"
-
-path="res://.godot/imported/couch.png-10df182683488e85d07cd2deb7ac55a3.ctex"
+uid="uid://b7ivvwcldyuke"
+path="res://.godot/imported/lizard_sheet.png-7ff733ba260ee9c26f61419eb3f4ce56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/couch.png"
-dest_files=["res://.godot/imported/couch.png-10df182683488e85d07cd2deb7ac55a3.ctex"]
+source_file="res://assets/sprites/lizard_sheet.png"
+dest_files=["res://.godot/imported/lizard_sheet.png-7ff733ba260ee9c26f61419eb3f4ce56.ctex"]
 
 [params]
 
