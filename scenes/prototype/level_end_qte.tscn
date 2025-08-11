@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://i2mfct4onoo3"]
+[gd_scene load_steps=8 format=3 uid="uid://i2mfct4onoo3"]
 
 [ext_resource type="Texture2D" uid="uid://c7j3tajgn5p7" path="res://assets/bg/zoompattern.png" id="1_exxvv"]
 [ext_resource type="PackedScene" uid="uid://b7wplqfop7hd7" path="res://characters/lizard/lizard_qte.tscn" id="1_h7kg2"]
 [ext_resource type="Shader" uid="uid://dp1hrnsthnvrh" path="res://scenes/prototype/level_end_qte.gdshader" id="1_k4lbd"]
 [ext_resource type="Script" uid="uid://dfal2qcy1pflv" path="res://scenes/prototype/level_end_qte.gd" id="1_loenh"]
 [ext_resource type="PackedScene" uid="uid://qn5cteq8u8oc" path="res://characters/lizard/button.tscn" id="2_g5dcm"]
+[ext_resource type="AudioStream" uid="uid://beofi3554uk54" path="res://assets/audio/Lizard.wav" id="6_loenh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_weem4"]
 shader = ExtResource("1_k4lbd")
@@ -47,3 +48,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "[shake rate=10.0 level=1
  connected=1]Press Spacebar![/shake]"
+
+[node name="lizardSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_loenh")
