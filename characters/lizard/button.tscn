@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://qn5cteq8u8oc"]
+
+[ext_resource type="Texture2D" uid="uid://cyxdayufasvq2" path="res://assets/sprites/button_press.png" id="1_sqrxj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwqh2"]
+atlas = ExtResource("1_sqrxj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekviu"]
+atlas = ExtResource("1_sqrxj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kfa3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwqh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwqh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekviu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekviu")
+}],
+"loop": false,
+"name": &"RedButtonPressed",
+"speed": 5.0
+}]
+
+[node name="RedButton" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_0kfa3")
+animation = &"RedButtonPressed"
