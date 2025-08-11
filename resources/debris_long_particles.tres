@@ -32,3 +32,6 @@ damping_min = 10.0
 damping_max = 20.0
 alpha_curve = SubResource("CurveTexture_ri2uu")
 anim_offset_max = 1.0
+collision_mode = 1
+collision_friction = 0.4
+collision_bounce = 0.67
