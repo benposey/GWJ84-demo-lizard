@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @onready var objects: Node2D = $Objects
 
 func _input(event):
