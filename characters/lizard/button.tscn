@@ -25,12 +25,11 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ekviu")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"RedButtonPressed",
 "speed": 5.0
 }]
 
-[node name="button" type="AnimatedSprite2D"]
+[node name="RedButton" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_0kfa3")
-frame = 3
-frame_progress = 0.761057
+animation = &"RedButtonPressed"

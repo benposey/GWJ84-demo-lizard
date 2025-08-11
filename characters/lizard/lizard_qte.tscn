@@ -20,11 +20,6 @@ region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yjgxb"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_is6ia")
@@ -38,11 +33,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u21cj")
 }],
+"loop": false,
+"name": &"LizardJump",
+"speed": 5.0
+}, {
+"frames": [],
 "loop": true,
-"name": &"lizard_jumping",
+"name": &"default",
 "speed": 5.0
 }]
 
 [node name="LizardQTE" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_yjgxb")
-animation = &"lizard_jumping"
+animation = &"LizardJump"
