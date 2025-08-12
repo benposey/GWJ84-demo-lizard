@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dnlt78rlubm56"]
+[gd_scene load_steps=33 format=3 uid="uid://dnlt78rlubm56"]
 
 [ext_resource type="Script" uid="uid://b5ufdsqjjhvj5" path="res://characters/lizard/lizard.gd" id="1_3lx1n"]
 [ext_resource type="Texture2D" uid="uid://do1k3u6ds334j" path="res://assets/sprites/gex_full_body.png" id="1_kkcna"]
@@ -226,6 +226,18 @@ radius = 15.0
 atlas = ExtResource("3_wwcra")
 region = Rect2(0, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_io2ne"]
+atlas = ExtResource("3_wwcra")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqygp"]
+atlas = ExtResource("3_wwcra")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klarl"]
+atlas = ExtResource("3_wwcra")
+region = Rect2(64, 128, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3lx1n"]
 animations = [{
 "frames": [{
@@ -234,7 +246,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io2ne")
+}],
+"loop": true,
+"name": &"grab_hold",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqygp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klarl")
+}],
+"loop": false,
+"name": &"grab_start",
+"speed": 6.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -284,3 +315,5 @@ debug_color = Color(0.808971, 0.358744, 0.539481, 0.42)
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3lx1n")
+animation = &"grab_start"
+autoplay = "default"
