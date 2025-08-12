@@ -19,4 +19,6 @@ class LevelEvents:
 	signal level_ended()
 
 class ComboEvents:
+	signal combo_bar_expired()
+	signal combo_bar_maxed()
 	signal combo_changed(new_combo: int)
