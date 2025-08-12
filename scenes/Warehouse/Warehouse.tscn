@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=32 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
