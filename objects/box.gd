@@ -12,6 +12,7 @@ func _ready() -> void:
 func destroy():
 	if !is_destroyed:
 		is_destroyed = true
+		Events.camera.add_trauma.emit(0.1)
 		Events.objects.object_destroyed.emit(point_value, self.global_position)
 		animation_player.play("explode")
 		await(animation_player.animation_finished)
