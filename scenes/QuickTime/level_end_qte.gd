@@ -5,6 +5,13 @@ extends Node2D
 @onready var lizard_sound: AudioStreamPlayer = $lizardSound
 
 var buttonPressCount = 1
+var quickEventTime = 5.0 #seconds
+var incrementRate = 0.1
+
+#todo implement quick time event popping up and timer starting
+#func EndOfLevelTrigger(event):
+	#display QTE
+	#var quickTimeEventTimer = get_tree().create_timer(quickEventTime)
 
 func _input(event):
 	if event.is_action_pressed("detonate"):
@@ -12,6 +19,10 @@ func _input(event):
 		red_button.play("RedButtonPressed")
 		lizard_qte.speed_scale = buttonPressCount
 		red_button.speed_scale = buttonPressCount
-		buttonPressCount += 0.5
+		buttonPressCount += incrementRate
 		lizard_sound.play()
 		#todo increment score multiplier
+
+func _ready():
+	#listen for timer end signal
+	print("level end")
