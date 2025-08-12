@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c8bjm31f3wwgm" path="res://assets/environment/tile_144.png" id="10_20cbv"]
 [ext_resource type="Texture2D" uid="uid://dy04n05blspb2" path="res://assets/environment/tile_96.png" id="11_fdhiv"]
 [ext_resource type="PackedScene" uid="uid://dnlt78rlubm56" path="res://characters/lizard/lizard.tscn" id="12_au7bp"]
-[ext_resource type="Script" uid="uid://c266jei01tqfo" path="res://characters/camera_follow.gd" id="13_cvm3i"]
+[ext_resource type="Script" uid="uid://c266jei01tqfo" path="res://characters/camera_controller.gd" id="13_cvm3i"]
 [ext_resource type="PackedScene" uid="uid://vhguvlrn5tsr" path="res://objects/box.tscn" id="13_e7vmk"]
 [ext_resource type="Script" uid="uid://cqfgsm8rhla3t" path="res://scenes/Warehouse/point_counter.gd" id="14_h115g"]
 [ext_resource type="PackedScene" uid="uid://dumyj4mxjmng5" path="res://scenes/Menus/Pause/PauseMenu.tscn" id="15_112t3"]
@@ -260,6 +260,12 @@ sources/0 = SubResource("TileSetAtlasSource_rlg6r")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_112t3"]
 polygon = PackedVector2Array(53, 69, 53, 294, 199, 295, 199, 311, 39, 311, 39, 55, 391, 56, 392, 313, 231, 312, 231, 295, 377, 295, 379, 174, 379, 69)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
+noise_type = 3
+seed = 420
+frequency = 0.25
+fractal_octaves = 2
+
 [node name="Warehouse" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_ybp5e")
@@ -291,6 +297,12 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.15
 editor_draw_drag_margin = true
 script = ExtResource("13_cvm3i")
+noise = SubResource("FastNoiseLite_cvm3i")
+
+[node name="DebugTraumaLabel" type="Label" parent="Player/CameraFollow"]
+visible = false
+offset_right = 40.0
+offset_bottom = 12.0
 
 [node name="ObjectHolder" type="Node" parent="."]
 
