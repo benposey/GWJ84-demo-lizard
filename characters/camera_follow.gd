@@ -4,7 +4,7 @@ extends Camera2D
 @export_range(0.0, 0.5) var mouse_follow_amount: float = 0.25
 @export_range(0.0, 0.5) var mouse_follow_speed: float = 0.05
 
-func _process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	if look_ahead_active:
 		offset = lerp(offset, (get_local_mouse_position() - position) * mouse_follow_amount, mouse_follow_speed)
 	else:

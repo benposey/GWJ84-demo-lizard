@@ -1,5 +1,6 @@
 extends Node
 
+
 func display_points(value: int, position: Vector2):
 	var number = Label.new()
 	number.global_position = position
@@ -7,14 +8,7 @@ func display_points(value: int, position: Vector2):
 	number.z_index = 5 # put this in front of all other sprites
 	number.label_settings = LabelSettings.new()
 	
-	var color = "#FFF"
-	if value > 100:
-		color = "#B22"
-	
-	if value == 0:
-		color = "#FFF8"
-		
-	number.label_settings.font_color = color
+	number.label_settings.font_color = GlobalVars.Multiplier_To_Color[GlobalVars.ComboMultiplier]
 	number.label_settings.font_size = 18
 	number.label_settings.outline_color = "#000"
 	number.label_settings.outline_size = 1

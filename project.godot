@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 Events="*res://Singletons/Events.tscn"
 DestroyedPointsDisplay="*res://Singletons/DestroyedPointsDisplay.gd"
 PauseMenu="*res://scenes/Menus/Pause/PauseMenu.tscn"
+GlobalVars="*res://Singletons/GlobalVars.gd"
 
 [display]
 
@@ -87,6 +88,11 @@ grab={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Objects"
 2d_physics/layer_3="Walls"
+
+[physics]
+
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
 
 [rendering]
 

@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c8bjm31f3wwgm" path="res://assets/environment/tile_144.png" id="10_20cbv"]
 [ext_resource type="Texture2D" uid="uid://dy04n05blspb2" path="res://assets/environment/tile_96.png" id="11_fdhiv"]
 [ext_resource type="PackedScene" uid="uid://dnlt78rlubm56" path="res://characters/lizard/lizard.tscn" id="12_au7bp"]
-[ext_resource type="Script" path="res://characters/camera_follow.gd" id="13_cvm3i"]
+[ext_resource type="Script" uid="uid://c266jei01tqfo" path="res://characters/camera_follow.gd" id="13_cvm3i"]
 [ext_resource type="PackedScene" uid="uid://vhguvlrn5tsr" path="res://objects/box.tscn" id="13_e7vmk"]
 [ext_resource type="Script" uid="uid://cqfgsm8rhla3t" path="res://scenes/Warehouse/point_counter.gd" id="14_h115g"]
 [ext_resource type="PackedScene" uid="uid://dumyj4mxjmng5" path="res://scenes/Menus/Pause/PauseMenu.tscn" id="15_112t3"]
@@ -284,11 +284,6 @@ position = Vector2(216, 311)
 
 [node name="CameraFollow" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.15
-drag_right_margin = 0.1
-drag_bottom_margin = 0.15
-editor_draw_drag_margin = true
 script = ExtResource("13_cvm3i")
 
 [node name="ObjectHolder" type="Node" parent="."]
