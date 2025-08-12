@@ -11,4 +11,6 @@ class MenuEvents:
 	signal paused()
 	
 class ComboEvents:
+	signal combo_bar_expired()
+	signal combo_bar_maxed()
 	signal combo_changed(new_combo: int)

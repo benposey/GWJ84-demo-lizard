@@ -20,7 +20,8 @@ var Combo_Multiplier = 1
 var Combo_DecayRate = Multiplier_To_DecayRate[1]
 
 func _ready() -> void:
-	Events.objects.object_destroyed.connect(_on_object_destroyed)
+	Events.combos.combo_bar_maxed.connect(_on_combo_bar_maxed)
+	Events.combos.combo_bar_expired.connect(_on_combo_bar_expired)
 
 func update_combo_multiplier(new_multiplier):
 	Combo_Multiplier = new_multiplier
@@ -28,9 +29,9 @@ func update_combo_multiplier(new_multiplier):
 	# Engine.time_scale = Multiplier_To_DecayRate[Combo_Multiplier] TODO: This could be real fun
 	Events.combos.combo_changed.emit(Combo_Multiplier)
 
-func reset_combo():
+func _on_combo_bar_expired():
 	update_combo_multiplier(DEFAULT_COMBO)
 
-func _on_object_destroyed(_point_value: int, _spawn_position: Vector2) -> void:
+func _on_combo_bar_maxed() -> void:
 	update_combo_multiplier(min(Combo_Multiplier*2, MAX_COMBO))
 	
