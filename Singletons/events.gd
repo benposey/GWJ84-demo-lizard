@@ -11,4 +11,4 @@ class MenuEvents:
 	signal paused()
 
 class LevelEvents:
-	signal level_end()
+	signal level_ended()
