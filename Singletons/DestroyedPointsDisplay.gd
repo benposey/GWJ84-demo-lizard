@@ -8,7 +8,7 @@ func display_points(value: int, position: Vector2):
 	number.z_index = 5 # put this in front of all other sprites
 	number.label_settings = LabelSettings.new()
 	
-	number.label_settings.font_color = ComboManager.Multiplier_To_Color[ComboManager.Combo_Multiplier]
+	number.label_settings.font_color = ComboManager.Combo_Color
 	number.label_settings.font_size = 18
 	number.label_settings.outline_color = "#000"
 	number.label_settings.outline_size = 1
