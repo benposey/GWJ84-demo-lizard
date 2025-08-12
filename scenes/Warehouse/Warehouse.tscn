@@ -352,15 +352,34 @@ offset_right = 0.0
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -21.0
-offset_right = 21.0
-offset_bottom = 12.0
+offset_left = -159.0
+offset_top = 89.0
+offset_right = -132.0
+offset_bottom = 101.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 script = ExtResource("17_jlw2o")
 
+[node name="ComboBar" type="ProgressBar" parent="FixedUI"]
+offset_left = 21.0
+offset_top = 101.0
+offset_right = 97.0
+offset_bottom = 117.0
+rotation = 1.5708
+max_value = 10.0
+value = 10.0
+fill_mode = 1
+show_percentage = false
+
+[node name="ComboTimer" type="Timer" parent="FixedUI"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="timeout" from="FixedUI/ComboTimer" to="." method="_on_combo_timer_expired"]
