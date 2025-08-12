@@ -371,13 +371,13 @@ offset_top = 101.0
 offset_right = 97.0
 offset_bottom = 117.0
 rotation = 1.5708
-max_value = 10.0
-value = 10.0
+max_value = 5.0
+value = 5.0
 fill_mode = 1
 show_percentage = false
 
 [node name="ComboTimer" type="Timer" parent="FixedUI"]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
