@@ -13,6 +13,9 @@ var incrementRate = 0.1
 	#display QTE
 	#var quickTimeEventTimer = get_tree().create_timer(quickEventTime)
 
+func _on_end_of_level():
+	show()
+
 func _input(event):
 	if event.is_action_pressed("detonate"):
 		lizard_qte.play("LizardJump")
@@ -25,4 +28,5 @@ func _input(event):
 
 func _ready():
 	#listen for timer end signal
+	Events.level.level_ended.connect(_on_end_of_level)
 	print("level end")

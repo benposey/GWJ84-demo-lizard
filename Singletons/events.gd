@@ -18,4 +18,3 @@ class LevelEvents:
 	
 class ComboEvents:
 	signal combo_changed(new_combo: int)
-

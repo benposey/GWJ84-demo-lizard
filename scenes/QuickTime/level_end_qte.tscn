@@ -12,6 +12,7 @@ shader = ExtResource("1_k4lbd")
 shader_parameter/SPEED = 1.0
 
 [node name="Level End QTE" type="Node2D"]
+visible = false
 script = ExtResource("1_loenh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
