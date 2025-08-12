@@ -22,7 +22,7 @@ config/icon="res://icon.svg"
 Events="*res://Singletons/Events.tscn"
 DestroyedPointsDisplay="*res://Singletons/DestroyedPointsDisplay.gd"
 PauseMenu="*res://scenes/Menus/Pause/PauseMenu.tscn"
-GlobalVars="*res://Singletons/GlobalVars.gd"
+ComboManager="*res://Singletons/ComboManager.gd"
 
 [display]
 
