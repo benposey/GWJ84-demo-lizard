@@ -44,7 +44,7 @@ func _input(event):
 		buttonPressCount += incrementRate
 		lizard_sound.play()
 		
-		qte_multiplier = 7.0 #todo increment score multiplier
+		qte_multiplier = 50.0 #todo increment score multiplier
 
 func _ready():
 	#listen for timer end signal
@@ -52,5 +52,5 @@ func _ready():
 	
 
 func _on_qte_timer_timeout() -> void:	
-	Events.level.qte_ended.emit(player_score, level_completion_time_sec, qte_multiplier, level_completion_objects_destroyed)
+	Events.level.qte_ended.emit(player_score, level_completion_time_sec, level_completion_objects_destroyed, qte_multiplier)
 	get_tree().change_scene_to_file("res://scenes/Summary/EndGameSummary.tscn")

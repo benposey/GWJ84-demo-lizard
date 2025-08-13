@@ -91,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "1:54:55"
 
-[node name="LizardMultiplier" type="RichTextLabel" parent="StatElements"]
+[node name="QTEMultiplier" type="RichTextLabel" parent="StatElements"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49375
