@@ -1,12 +1,14 @@
 extends Node2D
 @onready var combo_bar: ProgressBar = $FixedUI/ComboBar
 @onready var total_object_destroyed_count = 0
+@onready var spawnables: TileMapLayer = $LayerHolder/Spawnables
 
 const DEFAULT_COMBO = 1
+var test = 0
+
 
 func _ready() -> void:
 	Events.objects.object_destroyed.connect(_on_object_destroyed)
-
 
 func _input(event):
 	if event.is_action_pressed("restart"):
@@ -16,7 +18,7 @@ func _input(event):
 func _on_object_destroyed(_point_value, _position):
 	# Update Combo Bar
 	var time_remaining = combo_bar.time_left
-	combo_bar.start(time_remaining + 1.5)
+	combo_bar.start(time_remaining + ComboManager.Combo_IncreaseRate)
 	
 	# Check level ending conditions
 	#total_object_destroyed_count += 1	
