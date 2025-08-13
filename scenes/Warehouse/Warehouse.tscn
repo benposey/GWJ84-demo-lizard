@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=34 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dumyj4mxjmng5" path="res://scenes/Menus/Pause/PauseMenu.tscn" id="15_112t3"]
 [ext_resource type="Script" uid="uid://beq4r21485aj4" path="res://scenes/Warehouse/combo_counter.gd" id="17_jlw2o"]
 [ext_resource type="Script" uid="uid://dqg3tstd1vcok" path="res://scenes/Warehouse/combo_bar.gd" id="18_0bmip"]
+[ext_resource type="PackedScene" uid="uid://i2mfct4onoo3" path="res://scenes/QuickTime/level_end_qte.tscn" id="19_ntxun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5nfnw"]
 texture = ExtResource("2_h115g")
@@ -389,5 +390,7 @@ value = 5.0
 fill_mode = 1
 show_percentage = false
 script = ExtResource("18_0bmip")
+
+[node name="Level End QTE" parent="FixedUI" instance=ExtResource("19_ntxun")]
 
 [connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
