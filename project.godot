@@ -23,6 +23,7 @@ Events="*res://Singletons/Events.tscn"
 DestroyedPointsDisplay="*res://Singletons/DestroyedPointsDisplay.gd"
 PauseMenu="*res://scenes/Menus/Pause/PauseMenu.tscn"
 ComboManager="*res://Singletons/ComboManager.gd"
+GameStats="*res://Singletons/GameStats.gd"
 
 [display]
 

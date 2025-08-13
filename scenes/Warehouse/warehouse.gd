@@ -2,6 +2,7 @@ extends Node2D
 @onready var combo_bar: ProgressBar = $FixedUI/ComboBar
 @onready var stopwatch: Stopwatch = $FixedUI/Stopwatch
 @onready var spawnables: TileMapLayer = $LayerHolder/Spawnables
+@onready var point_counter: RichTextLabel = $FixedUI/PointCounter
 
 var destroyable_count = 0
 var total_object_destroyed_count = 0
@@ -32,7 +33,7 @@ func _on_object_destroyed(_point_value, _position):
 	if total_object_destroyed_count == destroyable_count:
 		stopwatch.stop()
 		stopwatch.hide()
-		Events.level.level_ended.emit()
+		Events.level.level_ended.emit(point_counter.current_points, stopwatch.timer, total_object_destroyed_count)
 	
 
 func _on_pause_button_pressed() -> void:

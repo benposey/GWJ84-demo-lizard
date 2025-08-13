@@ -13,11 +13,11 @@ class MenuEvents:
 	signal paused()
 
 class CameraEvents:
-	signal add_trauma(amount)
+	signal add_trauma(amount: float)
 
 class LevelEvents:
-	signal level_ended()
-	signal qte_ended()
+	signal level_ended(score: int, stopwatch_time_sec: float, objects_destroyed: int)
+	signal qte_ended(score:int, stopwatch_time_sec: float, objects_destroyed: int, qte_multiplier: float)
 
 class ComboEvents:
 	signal combo_bar_expired()
