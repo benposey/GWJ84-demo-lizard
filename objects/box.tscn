@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://vhguvlrn5tsr"]
+[gd_scene load_steps=46 format=3 uid="uid://vhguvlrn5tsr"]
 
 [ext_resource type="Script" uid="uid://c2df7m0m65t3i" path="res://objects/box.gd" id="1_6ymvw"]
 [ext_resource type="Texture2D" uid="uid://ra7ppnbyg8hw" path="res://assets/sprites/box.png" id="1_bctmu"]
@@ -111,6 +111,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DestructiveZone/DestructiveZoneCollision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_6ymvw"]
 resource_name = "explode"
@@ -213,6 +225,18 @@ tracks/7/keys = {
 "args": [],
 "method": &"play_small_explosion"
 }]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DestructiveZone/DestructiveZoneCollision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4uhvr"]
@@ -415,6 +439,8 @@ stream_1/stream = ExtResource("9_bnexv")
 stream_2/stream = ExtResource("10_puqnl")
 stream_3/stream = ExtResource("11_njivx")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tw32"]
+
 [node name="Box" type="RigidBody2D" groups=["destructable"]]
 collision_layer = 2
 collision_mask = 7
@@ -481,3 +507,12 @@ sprite_frames = SubResource("SpriteFrames_lj5h0")
 stream = SubResource("AudioStreamRandomizer_g0b3x")
 volume_db = -3.0
 bus = &"SFX"
+
+[node name="DestructiveZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="DestructiveZoneCollision" type="CollisionShape2D" parent="DestructiveZone"]
+shape = SubResource("RectangleShape2D_7tw32")
+
+[connection signal="body_entered" from="DestructiveZone" to="." method="_on_destructive_zone_body_entered"]

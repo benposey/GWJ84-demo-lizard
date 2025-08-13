@@ -1,8 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://dnlt78rlubm56"]
+[gd_scene load_steps=41 format=3 uid="uid://dnlt78rlubm56"]
 
 [ext_resource type="Script" uid="uid://b5ufdsqjjhvj5" path="res://characters/lizard/lizard.gd" id="1_3lx1n"]
 [ext_resource type="Texture2D" uid="uid://do1k3u6ds334j" path="res://assets/sprites/gex_full_body.png" id="1_kkcna"]
 [ext_resource type="Texture2D" uid="uid://b7ivvwcldyuke" path="res://assets/sprites/lizard_sheet.png" id="3_wwcra"]
+[ext_resource type="AudioStream" uid="uid://ba1wcivfurolr" path="res://assets/audio/tongue-1.wav" id="4_xhp0y"]
+[ext_resource type="AudioStream" uid="uid://b2pum7jc2luny" path="res://assets/audio/tongue-2.wav" id="5_wlhr7"]
+[ext_resource type="AudioStream" uid="uid://bvwdj1qy7y17c" path="res://assets/audio/tongue-3.wav" id="6_2s6mf"]
+[ext_resource type="AudioStream" uid="uid://gxkq5jmhyasq" path="res://assets/audio/tongue-shoot-1.wav" id="7_dyhpg"]
+[ext_resource type="AudioStream" uid="uid://ciok84ua1vswx" path="res://assets/audio/tongue-shoot-2.wav" id="8_07hxd"]
+[ext_resource type="AudioStream" uid="uid://cexco4b33uhgv" path="res://assets/audio/tongue-shoot-3.wav" id="9_7gax4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wwcra"]
 radius = 6.0
@@ -226,6 +232,18 @@ radius = 15.0
 atlas = ExtResource("3_wwcra")
 region = Rect2(0, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_io2ne"]
+atlas = ExtResource("3_wwcra")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqygp"]
+atlas = ExtResource("3_wwcra")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klarl"]
+atlas = ExtResource("3_wwcra")
+region = Rect2(64, 128, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3lx1n"]
 animations = [{
 "frames": [{
@@ -234,8 +252,41 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io2ne")
+}],
+"loop": true,
+"name": &"grab_hold",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqygp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klarl")
+}],
+"loop": false,
+"name": &"grab_start",
+"speed": 6.0
 }]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dyhpg"]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("4_xhp0y")
+stream_1/stream = ExtResource("5_wlhr7")
+stream_2/stream = ExtResource("6_2s6mf")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4sd3h"]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("7_dyhpg")
+stream_1/stream = ExtResource("8_07hxd")
+stream_2/stream = ExtResource("9_7gax4")
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -275,12 +326,36 @@ animation = &"attack1"
 autoplay = "idle"
 
 [node name="AttackArea" type="Area2D" parent="Arms" groups=["destructable"]]
+visible = false
 collision_mask = 2
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Arms/AttackArea"]
 position = Vector2(11, 0)
 shape = SubResource("CircleShape2D_ngdne")
-debug_color = Color(0.808971, 0.358744, 0.539481, 0.42)
+debug_color = Color(0.761093, 0.437236, 0.314521, 0.42)
+
+[node name="TongueObjectRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 2
+
+[node name="TongueWallRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 4
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3lx1n")
+animation = &"grab_hold"
+autoplay = "default"
+
+[node name="MouthTarget" type="Marker2D" parent="Head"]
+position = Vector2(10, 0)
+gizmo_extents = 8.0
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="TongueSuck" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_dyhpg")
+bus = &"SFX"
+
+[node name="TongueShoot" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_4sd3h")
