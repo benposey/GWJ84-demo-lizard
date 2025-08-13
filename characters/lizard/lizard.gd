@@ -25,7 +25,7 @@ enum TongueState {
 
 const SPEED: float = 100.0
 const THROW_FORCE: float = 800.0
-const MAX_TONGUE_TIME: float = 0.5
+const MAX_TONGUE_TIME: float = 0.4
 const RETRACT_TONGUE_TIME: float = 0.1
 
 var is_attacking: bool = false
@@ -70,13 +70,19 @@ func handle_tongue(delta: float) -> void:
 			_set_tongue_raycast_target(tongue_target)
 			head.look_at(get_global_mouse_position())
 			head.play("default")
-		
+		TongueState.Retract:
+			tongue_timer += delta
+			tongue_target = lerp(tongue_target, Vector2.ZERO, 10 * delta)
+			if tongue_timer > RETRACT_TONGUE_TIME:
+				tongue_state = TongueState.In
+				tongue_timer = 0
+			queue_redraw()
 		TongueState.Out:
 			tongue_timer += delta
 			print(tongue_timer)
 			# Retract tongue after max time
 			if tongue_timer > MAX_TONGUE_TIME:
-				tongue_state = TongueState.In
+				tongue_state = TongueState.Retract
 				tongue_timer = 0
 				
 			tongue_target = lerp(tongue_target, mouse_target, 30 * delta)
@@ -87,8 +93,11 @@ func handle_tongue(delta: float) -> void:
 				var collider = tongue_object_raycast.get_collider()
 				object_grabbed(collider)
 			elif tongue_wall_raycast.is_colliding():
-				tongue_state = TongueState.PullingPlayer
 				tongue_target = tongue_wall_raycast.get_collision_point() - global_position
+				tongue_state = TongueState.Retract
+				#TODO
+				#tongue_state = TongueState.PullingPlayer
+				
 			queue_redraw()
 		TongueState.PullingObject:
 			tongue_target = lerp(tongue_target, Vector2.ZERO, 24 * delta)
@@ -112,7 +121,7 @@ func _set_tongue_raycast_target(pos: Vector2) -> void:
 	tongue_wall_raycast.target_position = pos
 
 func _draw():
-	if (tongue_state == TongueState.Out):
+	if (tongue_state == TongueState.Out || tongue_state == TongueState.Retract):
 		draw_line(Vector2(0,0), tongue_target, "#ac76a5", 2.0)
 		draw_circle(tongue_target, 2, "#ac76a5")
 			
