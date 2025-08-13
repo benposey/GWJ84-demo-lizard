@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=61 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://s03a1pqnliya" path="res://assets/environment/Couch3.png" id="18_iao1r"]
 [ext_resource type="Texture2D" uid="uid://dsxwrpoyga0lg" path="res://assets/environment/Chair.png" id="19_iao1r"]
 [ext_resource type="Texture2D" uid="uid://bysu4q8oaqvyn" path="res://assets/environment/EndTable.png" id="20_20cbv"]
-[ext_resource type="Script" uid="uid://bm2dnaegduk05" path="res://scenes/Warehouse/Stopwatch.gd" id="23_fdhiv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
 noise_type = 3
@@ -579,16 +578,10 @@ pattern_0 = SubResource("TileMapPattern_fdhiv")
 pattern_1 = SubResource("TileMapPattern_au7bp")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_iao1r"]
-resource_name = "Boxes"
 scenes/1/scene = ExtResource("13_e7vmk")
 
 [sub_resource type="TileSet" id="TileSet_4uu43"]
 sources/1 = SubResource("TileSetScenesCollectionSource_iao1r")
-
-[sub_resource type="LabelSettings" id="LabelSettings_20cbv"]
-font_size = 23
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Warehouse" type="Node2D"]
 process_mode = 1
@@ -634,7 +627,6 @@ tile_map_data = PackedByteArray("AAAVAPn/AQAAAAAAAQAWAPn/AQAAAAAAAQAWAPr/AQAAAAA
 tile_set = SubResource("TileSet_4uu43")
 
 [node name="FixedUI" type="CanvasLayer" parent="."]
-layer = 5
 
 [node name="PointCounter" type="RichTextLabel" parent="FixedUI"]
 offset_left = 9.0
@@ -642,6 +634,27 @@ offset_right = 49.0
 offset_bottom = 40.0
 script = ExtResource("14_h115g")
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="Button" parent="FixedUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -15.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "||"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="FixedUI" instance=ExtResource("15_112t3")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_right = 0.0
 
 [node name="ComboCounter" type="RichTextLabel" parent="FixedUI"]
 anchors_preset = 5
@@ -675,39 +688,5 @@ script = ExtResource("18_0bmip")
 metadata/_edit_use_anchors_ = true
 
 [node name="Level End QTE" parent="FixedUI" instance=ExtResource("6_20cbv")]
-
-[node name="PauseButton" type="Button" parent="FixedUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -15.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "||"
-metadata/_edit_use_anchors_ = true
-
-[node name="PauseMenu" parent="FixedUI" instance=ExtResource("15_112t3")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 0.0
-offset_right = 0.0
-
-[node name="Stopwatch" type="Label" parent="FixedUI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 12.0
-grow_horizontal = 2
-text = "0:0.00"
-label_settings = SubResource("LabelSettings_20cbv")
-horizontal_alignment = 1
-script = ExtResource("23_fdhiv")
 
 [connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
