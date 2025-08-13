@@ -1,13 +1,15 @@
 extends Node2D
 @onready var combo_bar: ProgressBar = $FixedUI/ComboBar
-@onready var object_holder: Node = $ObjectHolder
-@onready var child_count = object_holder.get_child_count()
 @onready var total_object_destroyed_count = 0
 
 const DEFAULT_COMBO = 1
 
 func _ready() -> void:
 	Events.objects.object_destroyed.connect(_on_object_destroyed)
+	spawn_objects()
+
+func spawn_objects():
+	pass
 
 
 func _input(event):
@@ -21,10 +23,10 @@ func _on_object_destroyed(_point_value, _position):
 	combo_bar.start(time_remaining + 1.5)
 	
 	# Check level ending conditions
-	total_object_destroyed_count += 1	
-	if total_object_destroyed_count == child_count:
-		Events.level.level_ended.emit()
-		print("level ended")
+	#total_object_destroyed_count += 1	
+	#if total_object_destroyed_count == child_count:
+		#Events.level.level_ended.emit()
+		#print("level ended")
 	
 
 func _on_pause_button_pressed() -> void:

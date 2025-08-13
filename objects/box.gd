@@ -4,15 +4,18 @@ extends DestructObject
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var small_explosion: Node2D = $SmallExplosion
 
+const TRAUMA_FACTOR := 0.1
+const BOX_POINTS := 100
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	point_value = 100 # override the default point value
+	point_value = BOX_POINTS # override the default point value
 	small_explosion.hide()
 
 func destroy():
 	if !is_destroyed:
 		is_destroyed = true
-		Events.camera.add_trauma.emit(0.1)
+		Events.camera.add_trauma.emit(TRAUMA_FACTOR)
 		Events.objects.object_destroyed.emit(point_value, self.global_position)
 		animation_player.play("explode")
 		await(animation_player.animation_finished)
