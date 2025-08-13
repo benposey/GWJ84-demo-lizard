@@ -5,10 +5,15 @@ extends CharacterBody2D
 @onready var arms: AnimatedSprite2D = $Arms
 @onready var head: AnimatedSprite2D = $Head
 @onready var attack_area: Area2D = $Arms/AttackArea
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+# Tongue
 @onready var tongue_object_raycast: RayCast2D = $TongueObjectRaycast
 @onready var tongue_wall_raycast: RayCast2D = $TongueWallRaycast
 @onready var mouth_target: Marker2D = $Head/MouthTarget
+
+# Audio
+@onready var tongue_suck: AudioStreamPlayer2D = $Audio/TongueSuck
+@onready var tongue_shoot: AudioStreamPlayer2D = $Audio/TongueShoot
 
 enum TongueState {
 	In,
@@ -130,12 +135,13 @@ func attack():
 	tongue_state = TongueState.In
 	
 func grab():
-	audio_stream_player_2d.play()
+	tongue_suck.play()
 	tongue_state = TongueState.Out
 	mouse_target = get_local_mouse_position()
 	head.play("grab_start")
 
 func shoot_grabbed_object():
+	tongue_shoot.play()
 	# Disable player collision
 	grabbed_object.set_collision_mask_value(1, false)
 	grabbed_object.freeze = false
@@ -144,6 +150,7 @@ func shoot_grabbed_object():
 	grabbed_object.linear_velocity = (get_global_mouse_position() - global_position).normalized() * THROW_FORCE
 	grabbed_object = null
 	tongue_state = TongueState.In
+	mouse_target = Vector2.ZERO
 
 func _play_body_animation(animation_name: String):
 	for part in body_parts.get_children():
