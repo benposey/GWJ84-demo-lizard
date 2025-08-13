@@ -578,6 +578,7 @@ pattern_0 = SubResource("TileMapPattern_fdhiv")
 pattern_1 = SubResource("TileMapPattern_au7bp")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_iao1r"]
+resource_name = "Boxes"
 scenes/1/scene = ExtResource("13_e7vmk")
 
 [sub_resource type="TileSet" id="TileSet_4uu43"]
