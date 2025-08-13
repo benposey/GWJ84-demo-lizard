@@ -1,6 +1,6 @@
 extends Node2D
 @onready var combo_bar: ProgressBar = $FixedUI/ComboBar
-
+@onready var stopwatch: Stopwatch = $FixedUI/Stopwatch
 @onready var spawnables: TileMapLayer = $LayerHolder/Spawnables
 
 var destroyable_count = 0
@@ -23,15 +23,16 @@ func _input(event):
 		get_tree().reload_current_scene()
 
 func _on_object_destroyed(_point_value, _position):
+	stopwatch.start()
 	# Update Combo Bar
 	var time_remaining = combo_bar.time_left
 	combo_bar.start(time_remaining + ComboManager.Combo_IncreaseRate)
 	
 	total_object_destroyed_count += 1	
-	print("total_object_destroyed_count", total_object_destroyed_count)
 	if total_object_destroyed_count == destroyable_count:
+		stopwatch.stop()
+		stopwatch.hide()
 		Events.level.level_ended.emit()
-		print("WAREHOUSE END")
 	
 
 func _on_pause_button_pressed() -> void:
