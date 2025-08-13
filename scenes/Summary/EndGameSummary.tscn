@@ -1,0 +1,159 @@
+[gd_scene load_steps=3 format=3 uid="uid://vbwv28fio2uf"]
+
+[ext_resource type="Texture2D" uid="uid://btnr7bg61fhqt" path="res://assets/bg/3257.jpg" id="1_ab1w0"]
+
+[sub_resource type="GDScript" id="GDScript_ubnvx"]
+resource_name = "title_label"
+script/source = "@tool
+extends Label
+class_name ConfigNameLabel
+## Displays the value of `application/config/name`, set in project settings.
+
+const NO_NAME_STRING : String = \"Title\"
+
+@export var auto_update : bool = true
+
+func update_name_label():
+	var config_name : String = ProjectSettings.get_setting(\"application/config/name\", NO_NAME_STRING)
+	if config_name.is_empty():
+		config_name = NO_NAME_STRING
+	text = config_name
+
+func _ready():
+	if auto_update:
+		update_name_label()
+"
+
+[node name="EndGameSummary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndSceneBackground" type="Sprite2D" parent="."]
+position = Vector2(64, 92.375)
+scale = Vector2(0.0731429, 0.0785469)
+texture = ExtResource("1_ab1w0")
+
+[node name="Labels" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.0388889
+anchor_right = -0.00625
+anchor_bottom = -0.0388889
+offset_left = 34.0
+offset_top = 66.0
+offset_right = 155.0
+offset_bottom = 141.0
+text = "RANK:
+Your Time:
+Lizard Multiplier: 
+Objects Demo'd:
+Horses Found:
+"
+
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = -67.0
+offset_top = -59.0
+offset_right = 6.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = -38.0
+offset_top = -24.0
+offset_right = 26.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DEMO LIZARD"
+
+[node name="Time" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = -38.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1:54:55"
+
+[node name="LizardMultiplier" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = -38.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "x150"
+
+[node name="ObjectDestroyedCount" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.0388889
+anchor_right = -0.00625
+anchor_bottom = -0.0388889
+offset_left = 122.0
+offset_top = 102.0
+offset_right = 162.0
+offset_bottom = 115.0
+text = "10"
+
+[node name="HorsesFound" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.0388889
+anchor_right = -0.00625
+anchor_bottom = -0.0388889
+offset_left = 122.0
+offset_top = 114.0
+offset_right = 162.0
+offset_bottom = 127.0
+text = "5"
+
+[node name="TitleLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = 13.0
+offset_right = 59.0
+offset_bottom = 37.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Demo Lizard"
+script = SubResource("GDScript_ubnvx")
