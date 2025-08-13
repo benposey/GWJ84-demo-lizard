@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://vbwv28fio2uf"]
+[gd_scene load_steps=4 format=3 uid="uid://vbwv28fio2uf"]
 
 [ext_resource type="Texture2D" uid="uid://btnr7bg61fhqt" path="res://assets/bg/3257.jpg" id="1_ab1w0"]
+[ext_resource type="Script" uid="uid://bkbln8laswg1b" path="res://scenes/Summary/end_game_summary.gd" id="1_mrj13"]
 
 [sub_resource type="GDScript" id="GDScript_ubnvx"]
 resource_name = "title_label"
@@ -31,11 +32,105 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mrj13")
 
 [node name="EndSceneBackground" type="Sprite2D" parent="."]
 position = Vector2(64, 92.375)
 scale = Vector2(0.0731429, 0.0785469)
 texture = ExtResource("1_ab1w0")
+
+[node name="StatElements" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = 71.25
+offset_top = 5.55554
+offset_right = 144.25
+offset_bottom = 45.5555
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = 100.25
+offset_top = 40.5555
+offset_right = 164.25
+offset_bottom = 54.5555
+grow_horizontal = 2
+grow_vertical = 2
+text = "DEMO LIZARD"
+
+[node name="Time" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = 100.25
+offset_top = 53.5555
+offset_right = 140.25
+offset_bottom = 67.5555
+grow_horizontal = 2
+grow_vertical = 2
+text = "1:54:55"
+
+[node name="QTEMultiplier" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = 100.25
+offset_top = 65.5555
+offset_right = 140.25
+offset_bottom = 79.5555
+grow_horizontal = 2
+grow_vertical = 2
+text = "x150"
+
+[node name="ObjectDestroyedCount" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.0388889
+anchor_right = -0.00625
+anchor_bottom = -0.0388889
+offset_left = 120.25
+offset_top = 96.5556
+offset_right = 160.25
+offset_bottom = 109.556
+text = "10"
+
+[node name="HorsesFound" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.0388889
+anchor_right = -0.00625
+anchor_bottom = -0.0388889
+offset_left = 120.25
+offset_top = 108.556
+offset_right = 160.25
+offset_bottom = 121.556
+text = "5"
 
 [node name="Labels" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -55,94 +150,6 @@ Objects Demo'd:
 Horses Found:
 "
 
-[node name="ScoreLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49375
-anchor_top = 0.461111
-anchor_right = 0.49375
-anchor_bottom = 0.461111
-offset_left = -67.0
-offset_top = -59.0
-offset_right = 6.0
-offset_bottom = -19.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "SCORE: "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Rank" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49375
-anchor_top = 0.461111
-anchor_right = 0.49375
-anchor_bottom = 0.461111
-offset_left = -38.0
-offset_top = -24.0
-offset_right = 26.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "DEMO LIZARD"
-
-[node name="Time" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49375
-anchor_top = 0.461111
-anchor_right = 0.49375
-anchor_bottom = 0.461111
-offset_left = -38.0
-offset_top = -11.0
-offset_right = 2.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "1:54:55"
-
-[node name="LizardMultiplier" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49375
-anchor_top = 0.461111
-anchor_right = 0.49375
-anchor_bottom = 0.461111
-offset_left = -38.0
-offset_top = 1.0
-offset_right = 2.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "x150"
-
-[node name="ObjectDestroyedCount" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.00625
-anchor_top = -0.0388889
-anchor_right = -0.00625
-anchor_bottom = -0.0388889
-offset_left = 122.0
-offset_top = 102.0
-offset_right = 162.0
-offset_bottom = 115.0
-text = "10"
-
-[node name="HorsesFound" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.00625
-anchor_top = -0.0388889
-anchor_right = -0.00625
-anchor_bottom = -0.0388889
-offset_left = 122.0
-offset_top = 114.0
-offset_right = 162.0
-offset_bottom = 127.0
-text = "5"
-
 [node name="TitleLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -157,3 +164,26 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Demo Lizard"
 script = SubResource("GDScript_ubnvx")
+
+[node name="ButtonsContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.5
+offset_top = -47.0
+offset_right = 15.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="MainMenuButton" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Main Menu"
+
+[connection signal="pressed" from="ButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
