@@ -6,10 +6,6 @@ const DEFAULT_COMBO = 1
 
 func _ready() -> void:
 	Events.objects.object_destroyed.connect(_on_object_destroyed)
-	spawn_objects()
-
-func spawn_objects():
-	pass
 
 
 func _input(event):
