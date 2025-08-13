@@ -17,6 +17,7 @@ class CameraEvents:
 
 class LevelEvents:
 	signal level_ended()
+	signal qte_ended()
 
 class ComboEvents:
 	signal combo_bar_expired()

@@ -3,16 +3,27 @@ extends Node2D
 @onready var red_button: AnimatedSprite2D = $RedButton
 @onready var lizard_qte: AnimatedSprite2D = $LizardQTE
 @onready var lizard_sound: AudioStreamPlayer = $lizardSound
+@onready var qte_timer: Timer = $QTE_Timer
+@onready var instructions: RichTextLabel = $Instructions
 
-var buttonPressCount = 1
+var buttonPressCount = 0
 var quickEventTime = 5.0 #seconds
 var incrementRate = 0.1
 
 #todo implement quick time event popping up and timer starting
 #func EndOfLevelTrigger(event):
-	#display QTE
+	#display QTEd
 	#var quickTimeEventTimer = get_tree().create_timer(quickEventTime)
 
+func _on_end_of_level():
+	self.show()	
+	instructions.show()
+	await get_tree().create_timer(3.0).timeout
+	instructions.hide()
+	buttonPressCount = 1
+	qte_timer.start()
+	await qte_timer.timeout
+	
 func _input(event):
 	if event.is_action_pressed("detonate"):
 		lizard_qte.play("LizardJump")
@@ -25,4 +36,9 @@ func _input(event):
 
 func _ready():
 	#listen for timer end signal
-	print("level end")
+	Events.level.level_ended.connect(_on_end_of_level)
+	
+
+func _on_qte_timer_timeout() -> void:	
+	Events.level.qte_ended.emit()
+	print("Qte Ended")

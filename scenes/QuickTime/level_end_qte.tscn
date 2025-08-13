@@ -12,23 +12,29 @@ shader = ExtResource("1_k4lbd")
 shader_parameter/SPEED = 1.0
 
 [node name="Level End QTE" type="Node2D"]
+visible = false
 script = ExtResource("1_loenh")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 125.0
-offset_top = 22.0
-offset_right = 197.0
-offset_bottom = 146.0
+[node name="DarkenedBg" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 179.0
+color = Color(0.0156863, 0.0156863, 0.0156863, 0.4)
+
+[node name="ForegroundBg" type="ColorRect" parent="."]
+offset_left = 121.0
+offset_right = 193.0
+offset_bottom = 124.0
+scale = Vector2(1.08, 2)
 color = Color(0.210101, 0.492857, 0.929054, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="HyperLines" type="TextureRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_weem4")
-offset_left = 106.0
-offset_top = 9.0
-offset_right = 426.0
-offset_bottom = 189.0
-scale = Vector2(0.369541, 2.60279)
+offset_left = 108.0
+offset_top = -27.0
+offset_right = 428.0
+offset_bottom = 153.0
+scale = Vector2(0.329541, 2.88279)
 texture = ExtResource("1_exxvv")
 
 [node name="RedButton" parent="." instance=ExtResource("2_g5dcm")]
@@ -37,7 +43,7 @@ position = Vector2(160, 100)
 [node name="LizardQTE" parent="." instance=ExtResource("1_h7kg2")]
 position = Vector2(160, 86)
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="Instructions" type="RichTextLabel" parent="."]
 offset_left = 127.0
 offset_top = 129.0
 offset_right = 209.0
@@ -51,3 +57,9 @@ text = "[shake rate=10.0 level=1
 
 [node name="lizardSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_loenh")
+
+[node name="QTE_Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="QTE_Timer" to="." method="_on_qte_timer_timeout"]
