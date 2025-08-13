@@ -35,4 +35,4 @@ alpha_curve = SubResource("CurveTexture_ri2uu")
 anim_offset_max = 1.0
 collision_mode = 1
 collision_friction = 0.1
-collision_bounce = 0.58
+collision_bounce = 0.0

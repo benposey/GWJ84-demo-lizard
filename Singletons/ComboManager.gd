@@ -46,7 +46,7 @@ func update_combo_multiplier(new_multiplier) -> void:
 	Combo_DecayRate = multiplier_attribute_map[Combo_Multiplier]["DecayRate"]
 	Combo_ShakeRate = multiplier_attribute_map[Combo_Multiplier]["ShakeRate"]
 	Combo_ShakeLevel = multiplier_attribute_map[Combo_Multiplier]["ShakeLevel"]
-	# Engine.time_scale = Multiplier_To_DecayRate[Combo_Multiplier] TODO: This could be real fun
+	#Engine.time_scale = multiplier_attribute_map[Combo_Multiplier]["DecayRate"] # TODO: This could be real fun
 	Events.combos.combo_changed.emit(Combo_Multiplier)
 
 func _on_combo_bar_expired() -> void:
