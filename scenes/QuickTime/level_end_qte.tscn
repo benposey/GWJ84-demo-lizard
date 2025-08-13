@@ -27,7 +27,7 @@ offset_bottom = 124.0
 scale = Vector2(1.08, 2)
 color = Color(0.210101, 0.492857, 0.929054, 1)
 
-[node name="Instructions" type="TextureRect" parent="."]
+[node name="HyperLines" type="TextureRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_weem4")
 offset_left = 108.0
@@ -43,7 +43,7 @@ position = Vector2(160, 100)
 [node name="LizardQTE" parent="." instance=ExtResource("1_h7kg2")]
 position = Vector2(160, 86)
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="Instructions" type="RichTextLabel" parent="."]
 offset_left = 127.0
 offset_top = 129.0
 offset_right = 209.0
@@ -57,3 +57,9 @@ text = "[shake rate=10.0 level=1
 
 [node name="lizardSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_loenh")
+
+[node name="QTE_Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="QTE_Timer" to="." method="_on_qte_timer_timeout"]
