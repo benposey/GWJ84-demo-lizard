@@ -14,13 +14,12 @@ var thrown = false
 func _ready() -> void:
 	point_value = BOX_POINTS # override the default point value
 	small_explosion.hide()
-	get_colliding_bodies()
 
 func destroy():
 	if !is_destroyed:
 		if !thrown:
-			destructive_zone_collision.disabled = true
-			
+			set_deferred("destructive_zone_collision.disabled", true)
+		
 		is_destroyed = true
 		Events.camera.add_trauma.emit(TRAUMA_FACTOR)
 		Events.objects.object_destroyed.emit(point_value, self.global_position)
