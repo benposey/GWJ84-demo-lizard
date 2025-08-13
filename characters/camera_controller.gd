@@ -7,7 +7,7 @@ extends Camera2D
 
 # Shake
 @export_range(0.0, 1.0) var decay: float = 0.8  # How quickly the shaking stops [0, 1].
-@export var max_offset = Vector2(160, 90)  # Maximum hor/ver shake in pixels.
+@export var max_offset = Vector2(80, 45)  # Maximum hor/ver shake in pixels.
 @export var max_roll = 0.1  # Maximum rotation in radians (use sparingly).
 @export var noise: FastNoiseLite
 @onready var trauma_label: Label = $DebugTraumaLabel
