@@ -23,11 +23,12 @@ enum TongueState {
 	PullingPlayer
 }
 
-const SPEED: float = 100.0
+
 const THROW_FORCE: float = 800.0
 const MAX_TONGUE_TIME: float = 0.4
 const RETRACT_TONGUE_TIME: float = 0.1
 
+var SPEED: float = 100.0
 var is_attacking: bool = false
 var mouse_target = Vector2.ZERO
 var tongue_target = Vector2.ZERO
@@ -37,6 +38,7 @@ var tongue_timer: float = 0.0
 
 func _ready() -> void:
 	head.play("default")
+	Events.combos.combo_changed.connect(_on_combo_changed)
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -171,3 +173,7 @@ func _destroy_bodies_in_range():
 		if body is DestructObject:
 			#print(body)
 			body.destroy()
+
+func _on_combo_changed(_new_multiplier):
+	print("adjusting speed", ComboManager.Combo_PlayerSpeed)
+	self.SPEED = ComboManager.Combo_PlayerSpeed
