@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var arms: AnimatedSprite2D = $Arms
 @onready var head: AnimatedSprite2D = $Head
 @onready var attack_area: Area2D = $Arms/AttackArea
+@onready var dash_timer: Timer = $DashControls/DashTimer
+@onready var dash_cooldown: Timer = $DashControls/DashCooldown
 
 # Tongue
 @onready var tongue_object_raycast: RayCast2D = $TongueObjectRaycast
@@ -23,13 +25,15 @@ enum TongueState {
 	PullingPlayer
 }
 
-
+const DASH_SPEED = 300.0
 const THROW_FORCE: float = 800.0
 const MAX_TONGUE_TIME: float = 0.4
 const RETRACT_TONGUE_TIME: float = 0.1
 
 var SPEED: float = 100.0
 var is_attacking: bool = false
+var is_dashing: bool = false
+var can_dash: bool = true
 var mouse_target = Vector2.ZERO
 var tongue_target = Vector2.ZERO
 var tongue_state: TongueState = TongueState.In
@@ -45,6 +49,13 @@ func _physics_process(delta: float) -> void:
 	
 	#print(attack_area.get_overlapping_areas())
 	#print(attack_area.get_overlapping_bodies())
+	
+	if Input.is_action_just_pressed("dash") and can_dash:
+		can_dash = false
+		is_dashing = true
+		dash_timer.start()
+		dash_cooldown.start()
+		
 	
 	if direction == Vector2.ZERO:
 		_play_body_animation("idle")
@@ -62,7 +73,10 @@ func _physics_process(delta: float) -> void:
 	body_parts.global_rotation = lerp_angle(body_parts.global_rotation, angle, 5 * delta)
 	arms.global_rotation = lerp_angle(body_parts.global_rotation, angle, 25 * delta)
 	
-	velocity = direction * SPEED
+	if is_dashing:
+		velocity = direction * DASH_SPEED
+	else:
+		velocity = direction * SPEED
 	move_and_slide()
 
 func handle_tongue(delta: float) -> void:
@@ -177,3 +191,11 @@ func _destroy_bodies_in_range():
 func _on_combo_changed(_new_multiplier):
 	print("adjusting speed", ComboManager.Combo_PlayerSpeed)
 	self.SPEED = ComboManager.Combo_PlayerSpeed
+
+
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
+
+
+func _on_dash_cooldown_timeout() -> void:
+	can_dash = true
