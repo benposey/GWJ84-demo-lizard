@@ -6,6 +6,7 @@ extends Node2D
 @onready var qte_timer: Timer = $QTE_Timer
 @onready var instructions: RichTextLabel = $Instructions
 @onready var time_bar_for_qte: ProgressBar = $time_bar_for_qte
+@onready var qte_multiplier_text: RichTextLabel = $QTE_multiplier_text
 
 var level_completion_time_sec = 0.0
 var level_completion_objects_destroyed = 0
@@ -45,7 +46,7 @@ func _input(event):
 		button_press_count += incrementRate
 		lizard_sound.play()
 		
-		qte_multiplier = 50.0 #todo increment score multiplier
+		qte_multiplier = 10*button_press_count
 
 func _ready():
 	#listen for timer end signal

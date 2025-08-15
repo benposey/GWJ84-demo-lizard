@@ -12,6 +12,7 @@ shader = ExtResource("1_k4lbd")
 shader_parameter/SPEED = 1.0
 
 [node name="Level End QTE" type="Node2D"]
+visible = false
 script = ExtResource("1_loenh")
 
 [node name="DarkenedBg" type="ColorRect" parent="."]
@@ -79,5 +80,11 @@ max_value = 5.0
 value = 5.0
 fill_mode = 1
 show_percentage = false
+
+[node name="QTE_multiplier_text" type="RichTextLabel" parent="."]
+offset_left = 140.0
+offset_top = 116.0
+offset_right = 180.0
+offset_bottom = 156.0
 
 [connection signal="timeout" from="QTE_Timer" to="." method="_on_qte_timer_timeout"]
