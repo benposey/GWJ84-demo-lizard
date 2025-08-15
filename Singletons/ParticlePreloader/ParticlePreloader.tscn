@@ -9,4 +9,5 @@ script = ExtResource("1_65gkl")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Box" parent="CanvasLayer" instance=ExtResource("2_ihuft")]
-position = Vector2(156, 95)
+position = Vector2(162, 36)
+DEBUG_MODE = true
