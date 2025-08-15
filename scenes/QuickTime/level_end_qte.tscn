@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dp1hrnsthnvrh" path="res://scenes/QuickTime/level_end_qte.gdshader" id="1_k4lbd"]
 [ext_resource type="Script" uid="uid://dfal2qcy1pflv" path="res://scenes/QuickTime/level_end_qte.gd" id="1_loenh"]
 [ext_resource type="PackedScene" uid="uid://qn5cteq8u8oc" path="res://characters/lizard/button.tscn" id="2_g5dcm"]
-[ext_resource type="AudioStream" uid="uid://beofi3554uk54" path="res://assets/audio/Lizard.wav" id="6_loenh"]
+[ext_resource type="AudioStream" uid="uid://ba3komaeqtkic" path="res://assets/audio/lizzard-1.mp3" id="6_sjaus"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_weem4"]
 shader = ExtResource("1_k4lbd")
@@ -56,7 +56,8 @@ text = "[shake rate=10.0 level=1
  connected=1]Press Spacebar![/shake]"
 
 [node name="lizardSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_loenh")
+stream = ExtResource("6_sjaus")
+max_polyphony = 10
 
 [node name="QTE_Timer" type="Timer" parent="."]
 wait_time = 5.0
