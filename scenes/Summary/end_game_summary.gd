@@ -13,6 +13,7 @@ var objects_destroyed := 0
 var horses_found := 0
 
 func _ready() -> void:
+	AudioManager.sfx_play()
 	score = GameStats.Stats_Score
 	score_label.text = "SCORE: %s" % score
 	
@@ -30,5 +31,5 @@ func _ready() -> void:
 	
 
 func _on_main_menu_button_pressed() -> void:
-	MusicPlayer.play_intro()
+	AudioManager.music_play("Intro")
 	get_tree().change_scene_to_file("res://scenes/Menus/Main/main_menu.tscn")
