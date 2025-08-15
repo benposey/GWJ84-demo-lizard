@@ -83,8 +83,13 @@ show_percentage = false
 
 [node name="QTE_multiplier_text" type="RichTextLabel" parent="."]
 offset_left = 140.0
-offset_top = 116.0
+offset_top = 102.0
 offset_right = 180.0
-offset_bottom = 156.0
+offset_bottom = 139.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "1X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="QTE_Timer" to="." method="_on_qte_timer_timeout"]

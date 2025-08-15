@@ -8,6 +8,8 @@ extends Node2D
 @onready var time_bar_for_qte: ProgressBar = $time_bar_for_qte
 @onready var qte_multiplier_text: RichTextLabel = $QTE_multiplier_text
 
+const TEXT_FORMAT = "[shake rate=%d level=%d connected=1][color=%s]%s[/color][shake] "
+
 var level_completion_time_sec = 0.0
 var level_completion_objects_destroyed = 0
 var player_score = 0
@@ -30,9 +32,10 @@ func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destor
 	instructions.show()
 	await get_tree().create_timer(1.0).timeout
 	instructions.hide()
-	button_press_count = 1
+	qte_multiplier_text.show()
+	button_press_count = 1.0
 	qte_timer.start()
-	
+	qte_multiplier_text.text = "1x"
 	#todo add multiplier counter
 	#todo add shake juice
 	#todo add color juice
@@ -45,12 +48,13 @@ func _input(event):
 		red_button.speed_scale = button_press_count
 		button_press_count += incrementRate
 		lizard_sound.play()
-		
+		qte_multiplier_text.text = str(qte_multiplier) + "x"
 		qte_multiplier = 10*button_press_count
 
 func _ready():
 	#listen for timer end signal
 	Events.level.level_ended.connect(_on_end_of_level)
+	qte_multiplier_text.hide()
 	
 
 func _on_qte_timer_timeout() -> void:	
