@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dp1hrnsthnvrh" path="res://scenes/QuickTime/level_end_qte.gdshader" id="1_k4lbd"]
 [ext_resource type="Script" uid="uid://dfal2qcy1pflv" path="res://scenes/QuickTime/level_end_qte.gd" id="1_loenh"]
 [ext_resource type="PackedScene" uid="uid://qn5cteq8u8oc" path="res://characters/lizard/button.tscn" id="2_g5dcm"]
-[ext_resource type="AudioStream" uid="uid://ba3komaeqtkic" path="res://assets/audio/lizzard-1.mp3" id="6_sjaus"]
+[ext_resource type="AudioStream" uid="uid://beofi3554uk54" path="res://assets/audio/Lizard.wav" id="6_loenh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_weem4"]
 shader = ExtResource("1_k4lbd")
@@ -39,13 +39,9 @@ texture = ExtResource("1_exxvv")
 
 [node name="RedButton" parent="." instance=ExtResource("2_g5dcm")]
 position = Vector2(160, 100)
-scale = Vector2(1.44, 1.4)
 
 [node name="LizardQTE" parent="." instance=ExtResource("1_h7kg2")]
-position = Vector2(160, 81)
-scale = Vector2(1.3843, 1.3843)
-frame = 3
-frame_progress = 1.0
+position = Vector2(160, 86)
 
 [node name="Instructions" type="RichTextLabel" parent="."]
 offset_left = 127.0
@@ -65,34 +61,8 @@ max_polyphony = 10
 bus = &"SFX"
 playback_type = 1
 
-
 [node name="QTE_Timer" type="Timer" parent="."]
 wait_time = 7.0
 one_shot = true
-
-[node name="time_bar_for_qte" type="ProgressBar" parent="."]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
-offset_left = 121.0
-offset_top = 23.0
-offset_right = 199.0
-offset_bottom = 39.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-max_value = 5.0
-value = 5.0
-fill_mode = 1
-show_percentage = false
-
-[node name="QTE_multiplier_text" type="RichTextLabel" parent="."]
-offset_left = 140.0
-offset_top = 102.0
-offset_right = 180.0
-offset_bottom = 139.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "1X"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="timeout" from="QTE_Timer" to="." method="_on_qte_timer_timeout"]
