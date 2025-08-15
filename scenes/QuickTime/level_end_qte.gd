@@ -21,6 +21,7 @@ var qte_multiplier = 0.0
 	#var quickTimeEventTimer = get_tree().create_timer(quickEventTime)
 
 func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destoryed: int):
+	MusicPlayer.play_detonate()
 	# passthrough variables for end game statistics 
 	player_score = score
 	level_completion_time_sec = level_complete_time_sec
