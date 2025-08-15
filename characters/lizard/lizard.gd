@@ -15,7 +15,9 @@ extends CharacterBody2D
 
 # Audio
 @onready var tongue_suck: AudioStreamPlayer2D = $Audio/TongueSuck
+@onready var tongue_suck_layer: AudioStreamPlayer2D = $Audio/TongueSuckLayer
 @onready var tongue_shoot: AudioStreamPlayer2D = $Audio/TongueShoot
+@onready var tongue_shoot_layer: AudioStreamPlayer2D = $Audio/TongueShootLayer
 
 enum TongueState {
 	In,
@@ -95,7 +97,6 @@ func handle_tongue(delta: float) -> void:
 			queue_redraw()
 		TongueState.Out:
 			tongue_timer += delta
-			print(tongue_timer)
 			# Retract tongue after max time
 			if tongue_timer > MAX_TONGUE_TIME:
 				tongue_state = TongueState.Retract
@@ -116,11 +117,11 @@ func handle_tongue(delta: float) -> void:
 				
 			queue_redraw()
 		TongueState.PullingObject:
-			tongue_target = lerp(tongue_target, Vector2.ZERO, 24 * delta)
+			tongue_target = lerp(tongue_target, Vector2.ZERO, 30 * delta)
 			_set_tongue_raycast_target(tongue_target)
 			head.look_at(get_global_mouse_position())
 			head.play("grab_hold")
-			grabbed_object.global_position = lerp(grabbed_object.global_position, mouth_target.global_position, 24 * delta)
+			grabbed_object.global_position = lerp(grabbed_object.global_position, mouth_target.global_position, 30 * delta)
 			queue_redraw()
 		TongueState.PullingPlayer:
 			head.look_at(tongue_target)
@@ -150,7 +151,6 @@ func _input(event):
 		shoot_grabbed_object()
 		
 func attack():
-	print("here")
 	is_attacking = true
 	var animation_name = ["attack1", "attack2"].pick_random() # TODO: combo attack sequence
 	arms.play(animation_name)
@@ -161,12 +161,14 @@ func attack():
 	
 func grab():
 	tongue_suck.play()
+	#tongue_suck_layer.play()
 	tongue_state = TongueState.Out
 	mouse_target = get_local_mouse_position()
 	head.play("grab_start")
 
 func shoot_grabbed_object():
 	tongue_shoot.play()
+	tongue_shoot_layer.play()
 	# Disable player collision
 	grabbed_object.set_collision_mask_value(1, false)
 	grabbed_object.freeze = false

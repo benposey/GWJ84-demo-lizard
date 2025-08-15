@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://5n6ybeo7w77b"]
+
+[ext_resource type="AudioStream" uid="uid://dwp5ssjreedee" path="res://assets/audio/music/theme-1-intro.wav" id="1_88t2n"]
+[ext_resource type="AudioStream" uid="uid://ci25mqojoh8ga" path="res://assets/audio/music/theme-1-loop.wav" id="2_o1jir"]
+[ext_resource type="Script" uid="uid://cp863sy1a5oeq" path="res://Singletons/music_player.gd" id="3_1qmkm"]
+[ext_resource type="AudioStream" uid="uid://crp3lu0ljnsb0" path="res://assets/audio/music/detonate-2.wav" id="3_o1jir"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_yt82o"]
+clip_count = 3
+clip_0/name = &"Intro"
+clip_0/stream = ExtResource("1_88t2n")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Loop"
+clip_1/stream = ExtResource("2_o1jir")
+clip_1/auto_advance = 0
+clip_2/name = &"Detonate"
+clip_2/stream = ExtResource("3_o1jir")
+clip_2/auto_advance = 2
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 2,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 2.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 1
+}
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_yt82o")
+autoplay = true
+bus = &"Music"
+script = ExtResource("3_1qmkm")
