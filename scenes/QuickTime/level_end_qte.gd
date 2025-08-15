@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	print("time_bar_for_qte ", time_bar_for_qte.value)
 
 func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destoryed: int):
-	MusicPlayer.play_detonate()
+	AudioManager.start_qte()
 	# passthrough variables for end game statistics 
 	player_score = score
 	level_completion_time_sec = level_complete_time_sec

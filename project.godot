@@ -25,7 +25,7 @@ DestroyedPointsDisplay="*res://Singletons/DestroyedPointsDisplay.gd"
 PauseMenu="*res://scenes/Menus/Pause/PauseMenu.tscn"
 ComboManager="*res://Singletons/ComboManager.gd"
 GameStats="*res://Singletons/GameStats.gd"
-MusicPlayer="*res://Singletons/music_player.tscn"
+AudioManager="*res://Singletons/audio_manager.tscn"
 
 [display]
 
