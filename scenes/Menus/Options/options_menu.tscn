@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3 uid="uid://fcihoj66ahhi"]
+
+[ext_resource type="Script" uid="uid://b78cyabpkm2tw" path="res://scenes/Menus/Options/options_menu.gd" id="1_tuyba"]
+[ext_resource type="Script" uid="uid://bifdidhx5heyv" path="res://scenes/Menus/Options/volume_slider.gd" id="2_tuyba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrt4h"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tuyba")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -80.0
+offset_right = 320.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(320, 320)
+theme_override_styles/panel = SubResource("StyleBoxFlat_yrt4h")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="OptionsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Options"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="VolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Volume"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MasterLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Master Volume"
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_tuyba")
+bus_name = "Master"
+
+[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Music Volume"
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_tuyba")
+bus_name = "Music"
+
+[node name="SfxLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "SFX"
+
+[node name="SfxSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "SFX Volume
+"
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_tuyba")
+bus_name = "SFX"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="BackButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer3/BackButton" to="." method="_on_back_button_pressed"]

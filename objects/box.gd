@@ -1,6 +1,9 @@
 class_name Box
 extends DestructObject
 
+@export var DEBUG_MODE: bool = false
+
+@onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var small_explosion: Node2D = $SmallExplosion
 @onready var destructive_zone_collision: CollisionShape2D = $DestructiveZone/DestructiveZoneCollision
@@ -14,6 +17,8 @@ var thrown = false
 func _ready() -> void:
 	point_value = BOX_POINTS # override the default point value
 	small_explosion.hide()
+	if DEBUG_MODE:
+		explosion_sound.volume_db = -60
 
 func destroy():
 	if !is_destroyed:

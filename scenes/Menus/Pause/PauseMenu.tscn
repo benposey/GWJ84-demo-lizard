@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dumyj4mxjmng5"]
+[gd_scene load_steps=3 format=3 uid="uid://dumyj4mxjmng5"]
 
 [ext_resource type="Script" uid="uid://b36peq6tvus3d" path="res://scenes/Menus/Pause/pause_menu.gd" id="1_0q7og"]
+[ext_resource type="PackedScene" uid="uid://fcihoj66ahhi" path="res://scenes/Menus/Options/options_menu.tscn" id="2_qm14d"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -37,4 +38,9 @@ text = "Options"
 layout_mode = 2
 text = "Unpause"
 
+[node name="OptionsMenu" parent="." instance=ExtResource("2_qm14d")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Unpause" to="." method="_on_unpause_pressed"]
