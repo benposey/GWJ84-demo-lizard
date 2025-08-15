@@ -60,11 +60,15 @@ text = "[shake rate=10.0 level=1
  connected=1]Press Spacebar![/shake]"
 
 [node name="lizardSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_sjaus")
+
+stream = ExtResource("6_loenh")
 max_polyphony = 10
+bus = &"SFX"
+playback_type = 1
+
 
 [node name="QTE_Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [node name="time_bar_for_qte" type="ProgressBar" parent="."]
