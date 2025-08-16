@@ -1,7 +1,7 @@
 extends RichTextLabel
 
 
-const TEXT_FORMAT = "[shake rate=%d level=%d connected=1][color=%s]%s[/color][shake] "
+const TEXT_FORMAT = "[shake rate=%f level=%d connected=1][color=%s]%s[/color][shake] "
 
 
 var current_combo = 1

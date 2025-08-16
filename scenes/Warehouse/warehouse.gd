@@ -16,7 +16,6 @@ func _ready() -> void:
 	Events.objects.object_destroyed.connect(_on_object_destroyed)
 	await get_tree().process_frame
 	destroyable_count = spawnables.get_child_count()
-	print("destroyable_count ", destroyable_count)
 
 
 func _input(event):

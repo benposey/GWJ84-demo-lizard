@@ -23,7 +23,7 @@ var qte_multiplier = 0.0
 
 func _process(delta: float) -> void:
 	time_bar_for_qte.value = qte_timer.time_left
-	print("time_bar_for_qte ", time_bar_for_qte.value)
+
 
 func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destoryed: int):
 	AudioManager.start_qte()
