@@ -40,7 +40,6 @@ func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destor
 	qte_timer.start()
 	qte_multiplier_text.text = "10x"
 	
-	#todo add shake juice
 	
 func _input(event):
 	if event.is_action_pressed("detonate"):
