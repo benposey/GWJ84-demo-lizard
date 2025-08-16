@@ -29,6 +29,9 @@ func _ready() -> void:
 	horses_found = GameStats.Stats_Horses_Found
 	horses_found_label.text = str(horses_found)
 	
+	await get_tree().create_timer(4.0).timeout
+	AudioManager.music_play("End")
+	
 
 func _on_main_menu_button_pressed() -> void:
 	AudioManager.music_play("Intro")

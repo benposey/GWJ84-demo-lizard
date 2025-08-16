@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://5n6ybeo7w77b"]
+[gd_scene load_steps=7 format=3 uid="uid://5n6ybeo7w77b"]
 
 [ext_resource type="AudioStream" uid="uid://dwp5ssjreedee" path="res://assets/audio/music/theme-1-intro.wav" id="1_88t2n"]
 [ext_resource type="AudioStream" uid="uid://ci25mqojoh8ga" path="res://assets/audio/music/theme-1-loop.wav" id="2_o1jir"]
 [ext_resource type="AudioStream" uid="uid://b10q6cnt6bkwj" path="res://assets/audio/music/detonate-3.wav" id="3_o1jir"]
 [ext_resource type="AudioStream" uid="uid://dyqqigusdcuhv" path="res://assets/audio/music/loop-fade-1.wav" id="4_1qmkm"]
+[ext_resource type="AudioStream" uid="uid://b6pkkx8257t2u" path="res://assets/audio/music/end-theme.wav" id="5_1qmkm"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_yt82o"]
-clip_count = 4
+clip_count = 5
 clip_0/name = &"Intro"
 clip_0/stream = ExtResource("1_88t2n")
 clip_0/auto_advance = 1
@@ -20,6 +21,9 @@ clip_2/auto_advance = 2
 clip_3/name = &"Fade"
 clip_3/stream = ExtResource("4_1qmkm")
 clip_3/auto_advance = 2
+clip_4/name = &"End"
+clip_4/stream = ExtResource("5_1qmkm")
+clip_4/auto_advance = 0
 _transitions = {
 Vector2i(0, 1): {
 "fade_beats": 1.0,
@@ -37,6 +41,12 @@ Vector2i(1, 3): {
 "fade_beats": 2.0,
 "fade_mode": 3,
 "from_time": 1,
+"to_time": 1
+},
+Vector2i(4, 0): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
 "to_time": 1
 }
 }
