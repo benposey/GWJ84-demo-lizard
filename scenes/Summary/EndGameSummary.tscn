@@ -50,21 +50,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ScoreLabel" type="RichTextLabel" parent="StatElements"]
+[node name="FinalScore" type="RichTextLabel" parent="StatElements"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49375
 anchor_top = 0.461111
 anchor_right = 0.49375
 anchor_bottom = 0.461111
-offset_left = 71.25
-offset_top = 11.5555
-offset_right = 144.25
-offset_bottom = 51.5555
+offset_left = 84.25
+offset_top = 5.55556
+offset_right = 209.25
+offset_bottom = 45.5556
 grow_horizontal = 2
 grow_vertical = 2
-text = "SCORE: "
-horizontal_alignment = 1
+text = "FINAL SCORE: "
 vertical_alignment = 1
 
 [node name="Rank" type="RichTextLabel" parent="StatElements"]
@@ -82,22 +81,15 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "DEMO LIZARD"
 
-[node name="Time" type="RichTextLabel" parent="StatElements"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49375
-anchor_top = 0.461111
-anchor_right = 0.49375
-anchor_bottom = 0.461111
-offset_left = 100.25
-offset_top = 53.5555
-offset_right = 140.25
-offset_bottom = 67.5555
-grow_horizontal = 2
-grow_vertical = 2
-text = "1:54:55"
+[node name="BaseScore" type="RichTextLabel" parent="StatElements"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 72.0
+offset_right = 160.0
+offset_bottom = 88.0
+text = "11000"
 
-[node name="QTEMultiplier" type="RichTextLabel" parent="StatElements"]
+[node name="Time" type="RichTextLabel" parent="StatElements"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49375
@@ -110,6 +102,21 @@ offset_right = 140.25
 offset_bottom = 79.5555
 grow_horizontal = 2
 grow_vertical = 2
+text = "1:54:55"
+
+[node name="QTEMultiplier" type="RichTextLabel" parent="StatElements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49375
+anchor_top = 0.461111
+anchor_right = 0.49375
+anchor_bottom = 0.461111
+offset_left = 100.25
+offset_top = 77.5555
+offset_right = 140.25
+offset_bottom = 91.5555
+grow_horizontal = 2
+grow_vertical = 2
 text = "x150"
 
 [node name="ObjectDestroyedCount" type="RichTextLabel" parent="StatElements"]
@@ -120,9 +127,9 @@ anchor_top = -0.0388889
 anchor_right = -0.00625
 anchor_bottom = -0.0388889
 offset_left = 120.25
-offset_top = 96.5556
+offset_top = 108.556
 offset_right = 160.25
-offset_bottom = 109.556
+offset_bottom = 121.556
 text = "10"
 
 [node name="HorsesFound" type="RichTextLabel" parent="StatElements"]
@@ -133,9 +140,9 @@ anchor_top = -0.0388889
 anchor_right = -0.00625
 anchor_bottom = -0.0388889
 offset_left = 120.25
-offset_top = 108.556
+offset_top = 120.556
 offset_right = 160.25
-offset_bottom = 121.556
+offset_bottom = 133.556
 text = "5"
 
 [node name="Labels" type="RichTextLabel" parent="."]
@@ -150,6 +157,7 @@ offset_top = 66.0
 offset_right = 155.0
 offset_bottom = 141.0
 text = "RANK:
+Base Score:
 Your Time:
 Lizard Multiplier: 
 Objects Demo'd:

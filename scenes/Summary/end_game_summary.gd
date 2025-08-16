@@ -1,6 +1,7 @@
 extends Control
-@onready var score_label: RichTextLabel = $StatElements/ScoreLabel
+@onready var final_score_label: RichTextLabel = $StatElements/FinalScore
 @onready var rank_label: RichTextLabel = $StatElements/Rank
+@onready var base_score_label: RichTextLabel = $StatElements/BaseScore
 @onready var time_lable: RichTextLabel = $StatElements/Time
 @onready var qte_multiplier_label: RichTextLabel = $StatElements/QTEMultiplier
 @onready var objects_destroyed_count_label: RichTextLabel = $StatElements/ObjectDestroyedCount
@@ -15,7 +16,8 @@ var horses_found := 0
 func _ready() -> void:
 	AudioManager.sfx_play()
 	score = GameStats.Stats_Score
-	score_label.text = "SCORE: %s" % score
+	base_score_label.text = "%s" % str(score)
+	final_score_label.text = "FINAL SCORE: %d" % (score * qte_multiplier)
 	
 	time = GameStats.Stats_Time
 	time_lable.text =  String.num(time, 3)
