@@ -1,15 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://i2mfct4onoo3"]
+[gd_scene load_steps=11 format=3 uid="uid://i2mfct4onoo3"]
 
 [ext_resource type="Texture2D" uid="uid://c7j3tajgn5p7" path="res://assets/bg/zoompattern.png" id="1_exxvv"]
 [ext_resource type="PackedScene" uid="uid://b7wplqfop7hd7" path="res://characters/lizard/lizard_qte.tscn" id="1_h7kg2"]
 [ext_resource type="Shader" uid="uid://dp1hrnsthnvrh" path="res://scenes/QuickTime/level_end_qte.gdshader" id="1_k4lbd"]
 [ext_resource type="Script" uid="uid://dfal2qcy1pflv" path="res://scenes/QuickTime/level_end_qte.gd" id="1_loenh"]
 [ext_resource type="PackedScene" uid="uid://qn5cteq8u8oc" path="res://characters/lizard/button.tscn" id="2_g5dcm"]
-[ext_resource type="AudioStream" uid="uid://ba3komaeqtkic" path="res://assets/audio/lizzard-1.mp3" id="6_sjaus"]
+[ext_resource type="AudioStream" uid="uid://dopvui3p3rq5k" path="res://assets/audio/qte/lizard-1-processed.wav" id="6_jlb60"]
+[ext_resource type="AudioStream" uid="uid://bw7e132ika7gq" path="res://assets/audio/qte/lizard-2-processed.wav" id="7_vhqqm"]
+[ext_resource type="AudioStream" uid="uid://bn3pmh7jy7v8l" path="res://assets/audio/qte/lizard-3-processed.wav" id="8_vhqqm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_weem4"]
 shader = ExtResource("1_k4lbd")
 shader_parameter/SPEED = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lumnj"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("6_jlb60")
+stream_1/stream = ExtResource("7_vhqqm")
+stream_2/stream = ExtResource("8_vhqqm")
 
 [node name="Level End QTE" type="Node2D"]
 visible = false
@@ -60,13 +69,13 @@ text = "[shake rate=10.0 level=1
  connected=1]Press Spacebar![/shake]"
 
 [node name="lizardSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_sjaus")
+stream = SubResource("AudioStreamRandomizer_lumnj")
 max_polyphony = 10
 bus = &"SFX"
 playback_type = 1
 
 [node name="QTE_Timer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 9.0
 one_shot = true
 
 [node name="time_bar_for_qte" type="ProgressBar" parent="."]
@@ -78,8 +87,8 @@ offset_right = 199.0
 offset_bottom = 39.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-max_value = 5.0
-value = 5.0
+max_value = 9.0
+value = 9.0
 fill_mode = 1
 show_percentage = false
 
