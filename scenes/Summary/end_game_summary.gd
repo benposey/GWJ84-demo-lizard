@@ -7,33 +7,46 @@ extends Control
 @onready var objects_destroyed_count_label: RichTextLabel = $StatElements/ObjectDestroyedCount
 @onready var horses_found_label: RichTextLabel = $StatElements/HorsesFound
 
-var score := 0
-var time := 0.0
-var qte_multiplier := 0.0
-var objects_destroyed := 0
-var horses_found := 0
+# Ranks
+const RANKING_BASELINE := 150000
+const QUIET_CHAMELEON = "QUIET CHAMELEON"
+const MUNDANE_MONITOR = "MUNDANE MONITOR"
+const KILLER_KOMODO = "KILLER KOMODO"
+const INCENDIARY_IGUANA = "INCENDIARY IGUANA"
+const DEMO_LIZARD = "DEMO LIZARD"
+
 
 func _ready() -> void:
+	var final_score = GameStats.Stats_Score * GameStats.Stats_QTE_Multiplier
+	
 	AudioManager.sfx_play()
-	score = GameStats.Stats_Score
-	base_score_label.text = "%s" % str(score)
-	final_score_label.text = "FINAL SCORE: %d" % (score * qte_multiplier)
-	
-	time = GameStats.Stats_Time
-	time_lable.text =  String.num(time, 3)
-	
-	qte_multiplier = GameStats.Stats_QTE_Multiplier
-	qte_multiplier_label.text = "%sx" % str(qte_multiplier)
-	
-	objects_destroyed = GameStats.Stats_Objects_Destroyed
-	objects_destroyed_count_label.text = str(objects_destroyed)
-	
-	horses_found = GameStats.Stats_Horses_Found
-	horses_found_label.text = str(horses_found)
+	final_score_label.text = "FINAL SCORE: %d" % final_score
+	rank_label.text = assign_rank(final_score)
+	base_score_label.text = "%s" % str(GameStats.Stats_Score)
+	time_lable.text =  String.num(GameStats.Stats_Time, 3)
+	qte_multiplier_label.text = "%dx" % GameStats.Stats_QTE_Multiplier
+	objects_destroyed_count_label.text = str(GameStats.Stats_Objects_Destroyed)	
+	horses_found_label.text = str(GameStats.Stats_Horses_Found)
 	
 	await get_tree().create_timer(3.0).timeout
 	AudioManager.music_play("End")
 	
+func assign_rank(score) -> String:
+	if score <= RANKING_BASELINE:
+		# Lmao do better
+		return QUIET_CHAMELEON 
+	elif score <= RANKING_BASELINE*4:
+		# alright
+		return MUNDANE_MONITOR
+	elif score <= RANKING_BASELINE*8:
+		# gettin pretty good
+		return KILLER_KOMODO
+	elif score <= RANKING_BASELINE*12:
+		# almost there
+		return INCENDIARY_IGUANA
+	else:
+		# good job
+		return DEMO_LIZARD
 
 func _on_main_menu_button_pressed() -> void:
 	AudioManager.music_play("Intro")

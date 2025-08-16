@@ -33,7 +33,7 @@ func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destor
 	# QTE logic
 	self.show()	
 	instructions.show()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	instructions.hide()
 	qte_multiplier_text.show()
 	button_press_count = 1.0
