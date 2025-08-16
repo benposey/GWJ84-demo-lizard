@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b6a5wfq03b2t1"
-path="res://.godot/imported/level-end-explosion.wav-d27d1f5cdd68c120a55ebad4af2d71dd.sample"
+path="res://.godot/imported/level-end-explosion.wav-09073b3b98df67f03cb5ddf3ba1bbc2b.sample"
 
 [deps]
 
-source_file="res://assets/audio/level-end-explosion.wav"
-dest_files=["res://.godot/imported/level-end-explosion.wav-d27d1f5cdd68c120a55ebad4af2d71dd.sample"]
+source_file="res://assets/audio/qte/level-end-explosion.wav"
+dest_files=["res://.godot/imported/level-end-explosion.wav-09073b3b98df67f03cb5ddf3ba1bbc2b.sample"]
 
 [params]
 
