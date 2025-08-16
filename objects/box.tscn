@@ -256,6 +256,7 @@ texture = ExtResource("3_d7q48")
 lifetime = 30.0
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 60
 process_material = ExtResource("6_mfu5d")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
