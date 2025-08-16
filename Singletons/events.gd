@@ -17,6 +17,7 @@ class CameraEvents:
 	signal add_trauma(amount: float)
 
 class LevelEvents:
+	signal level_end_countdown_completed()
 	signal level_ended(score: int, stopwatch_time_sec: float, objects_destroyed: int)
 	signal qte_ended(score:int, stopwatch_time_sec: float, objects_destroyed: int, qte_multiplier: float)
 
