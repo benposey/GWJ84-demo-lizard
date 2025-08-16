@@ -29,7 +29,7 @@ func _ready() -> void:
 	horses_found = GameStats.Stats_Horses_Found
 	horses_found_label.text = str(horses_found)
 	
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	AudioManager.music_play("End")
 	
 
