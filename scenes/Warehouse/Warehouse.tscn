@@ -711,7 +711,9 @@ label_settings = SubResource("LabelSettings_20cbv")
 horizontal_alignment = 1
 script = ExtResource("23_fdhiv")
 
-[node name="Cage" parent="." instance=ExtResource("24_au7bp")]
+[node name="MainObjectiveItems" type="Node2D" parent="."]
+
+[node name="Cage" parent="MainObjectiveItems" instance=ExtResource("24_au7bp")]
 position = Vector2(272, -98)
 
 [connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
