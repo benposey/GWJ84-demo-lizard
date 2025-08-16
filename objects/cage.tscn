@@ -1,0 +1,150 @@
+[gd_scene load_steps=21 format=3 uid="uid://bybnkhvl8yrpl"]
+
+[ext_resource type="Script" uid="uid://p4anmobmesnc" path="res://objects/cage.gd" id="1_7upp4"]
+[ext_resource type="Texture2D" uid="uid://d0m1yqlx1ev2e" path="res://assets/sprites/lizard-cage-sheet.png" id="2_atoxe"]
+[ext_resource type="Material" uid="uid://gj6pj7gp8kb2" path="res://resources/debris_particles.tres" id="3_atoxe"]
+[ext_resource type="Texture2D" uid="uid://cvucarop5aepn" path="res://assets/sprites/lizard-cage-parts-sheet.png" id="3_wa1vt"]
+[ext_resource type="PackedScene" uid="uid://j6vb81e7xr0l" path="res://objects/small_explosion.tscn" id="4_v3k8q"]
+[ext_resource type="Material" uid="uid://cugcjwmwqme8w" path="res://resources/debris_long_particles.tres" id="4_wa1vt"]
+[ext_resource type="AudioStream" uid="uid://bbwyrw12jv70q" path="res://assets/audio/metal-pipe.wav" id="7_acm08"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3k8q"]
+rough = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa1vt"]
+atlas = ExtResource("2_atoxe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pb0r"]
+atlas = ExtResource("2_atoxe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxuk6"]
+atlas = ExtResource("2_atoxe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt38e"]
+atlas = ExtResource("2_atoxe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fefdj"]
+atlas = ExtResource("2_atoxe")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0g5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa1vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pb0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxuk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt38e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fefdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3twxr"]
+atlas = ExtResource("2_atoxe")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l3be"]
+size = Vector2(28, 28)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wv52u"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67hb7"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p3mjv"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("7_acm08")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0uok"]
+size = Vector2(32, 32)
+
+[node name="Cage" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
+mass = 10000.0
+physics_material_override = SubResource("PhysicsMaterial_v3k8q")
+gravity_scale = 0.0
+linear_damp = 100.0
+angular_damp = 100.0
+script = ExtResource("1_7upp4")
+
+[node name="CageSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h0g5q")
+autoplay = "default"
+frame_progress = 0.551968
+
+[node name="CageDestroyedSprite" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_3twxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("RectangleShape2D_8l3be")
+
+[node name="DebrisParticles" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_wv52u")
+emitting = false
+amount = 6
+texture = ExtResource("3_wa1vt")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.54
+fixed_fps = 60
+process_material = ExtResource("3_atoxe")
+
+[node name="DebrisLongParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_67hb7")
+emitting = false
+amount = 7
+texture = ExtResource("3_wa1vt")
+lifetime = 30.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = ExtResource("4_wa1vt")
+
+[node name="SmallExplosion" parent="." node_paths=PackedStringArray("audio_stream_player") instance=ExtResource("4_v3k8q")]
+audio_stream_player = NodePath("../ExplosionSound")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_p3mjv")
+volume_db = -6.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="DestructiveZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="DestructiveZoneCollision" type="CollisionShape2D" parent="DestructiveZone"]
+visible = false
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("RectangleShape2D_l0uok")
+debug_color = Color(0.86782, 0.331234, 0.330571, 0.42)

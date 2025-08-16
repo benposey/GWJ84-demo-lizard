@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmpeuayx7d61q"]
 
-[ext_resource type="Script" path="res://Singletons/audio_manager.gd" id="1_t660p"]
+[ext_resource type="Script" uid="uid://cuemrb8tvesku" path="res://Singletons/audio_manager.gd" id="1_t660p"]
 [ext_resource type="PackedScene" uid="uid://5n6ybeo7w77b" path="res://Singletons/music_player.tscn" id="2_4vvjw"]
 [ext_resource type="AudioStream" uid="uid://b10q6cnt6bkwj" path="res://assets/audio/music/detonate-3.wav" id="3_y2k7y"]
 [ext_resource type="AudioStream" uid="uid://b6a5wfq03b2t1" path="res://assets/audio/qte/level-end-explosion.wav" id="4_huqg2"]

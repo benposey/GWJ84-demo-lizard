@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://fcihoj66ahhi"]
+[gd_scene load_steps=5 format=3 uid="uid://fcihoj66ahhi"]
 
 [ext_resource type="Script" uid="uid://b78cyabpkm2tw" path="res://scenes/Menus/Options/options_menu.gd" id="1_tuyba"]
 [ext_resource type="Script" uid="uid://bifdidhx5heyv" path="res://scenes/Menus/Options/volume_slider.gd" id="2_tuyba"]
+[ext_resource type="Script" uid="uid://cn2xqgug4l8qc" path="res://scenes/Menus/Options/screen_shake_toggle.gd" id="3_pp80q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrt4h"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_tuyba")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(640, 640)
+custom_minimum_size = Vector2(960, 640)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,7 +31,7 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(320, 320)
+pivot_offset = Vector2(480, 320)
 theme_override_styles/panel = SubResource("StyleBoxFlat_yrt4h")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -55,30 +56,32 @@ theme_override_font_sizes/font_size = 128
 text = "Options"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 32
+alignment = 1
 
-[node name="VolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Volume"
-
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="MasterLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="VolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 72
+text = "Volume"
+
+[node name="MasterLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Master"
 
-[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Master Volume"
 max_value = 1.0
@@ -87,12 +90,12 @@ value = 1.0
 script = ExtResource("2_tuyba")
 bus_name = "Master"
 
-[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Music Volume"
 max_value = 1.0
@@ -101,12 +104,12 @@ value = 1.0
 script = ExtResource("2_tuyba")
 bus_name = "Music"
 
-[node name="SfxLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="SfxLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "SFX"
 
-[node name="SfxSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="SfxSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "SFX Volume
 "
@@ -115,6 +118,29 @@ step = 0.01
 value = 1.0
 script = ExtResource("2_tuyba")
 bus_name = "SFX"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Visual" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 72
+text = "Accessibilty"
+
+[node name="ScreenShakeToggle" type="CheckButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Screen shake"
+script = ExtResource("3_pp80q")
 
 [node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -126,4 +152,5 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 flat = true
 
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer/ScreenShakeToggle" to="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer/ScreenShakeToggle" method="_on_toggled"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer3/BackButton" to="." method="_on_back_button_pressed"]
