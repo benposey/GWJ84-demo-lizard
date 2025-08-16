@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	follow_offset = _get_follow_offset()
 	
 	# Screen shake
-	if trauma:
+	if GlobalSettings.is_screen_shake_enabled && trauma:
 		# Debug
 		trauma_label.text = str(trauma)
 		

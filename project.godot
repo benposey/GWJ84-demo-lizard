@@ -26,6 +26,7 @@ PauseMenu="*res://scenes/Menus/Pause/PauseMenu.tscn"
 ComboManager="*res://Singletons/ComboManager.gd"
 GameStats="*res://Singletons/GameStats.gd"
 AudioManager="*res://Singletons/audio_manager.tscn"
+GlobalSettings="*res://Singletons/global_settings.gd"
 
 [display]
 
@@ -109,6 +110,7 @@ dash={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Objects"
 2d_physics/layer_3="Walls"
+2d_physics/layer_4="Cages"
 
 [physics]
 
