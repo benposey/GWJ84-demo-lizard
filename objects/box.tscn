@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://vhguvlrn5tsr"]
+[gd_scene load_steps=20 format=3 uid="uid://vhguvlrn5tsr"]
 
 [ext_resource type="Script" uid="uid://c2df7m0m65t3i" path="res://objects/box.gd" id="1_6ymvw"]
 [ext_resource type="Texture2D" uid="uid://ra7ppnbyg8hw" path="res://assets/sprites/box.png" id="1_bctmu"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://br8sbgo811fjy" path="res://assets/sprites/box-destroyed-centered-sheet.png" id="3_d7q48"]
 [ext_resource type="Material" uid="uid://gj6pj7gp8kb2" path="res://resources/debris_particles.tres" id="4_10rvk"]
 [ext_resource type="Material" uid="uid://cugcjwmwqme8w" path="res://resources/debris_long_particles.tres" id="6_mfu5d"]
-[ext_resource type="Texture2D" uid="uid://c6fe7t3va3op2" path="res://assets/sprites/small_explosion.png" id="7_mfu5d"]
+[ext_resource type="PackedScene" uid="uid://j6vb81e7xr0l" path="res://objects/small_explosion.tscn" id="7_7tw32"]
 [ext_resource type="AudioStream" uid="uid://diguriside31v" path="res://assets/audio/wood-smash-1-170410.mp3" id="8_7tw32"]
 [ext_resource type="AudioStream" uid="uid://l72pb0qd7nlo" path="res://assets/audio/wood-smash-3-170418.mp3" id="9_bnexv"]
 [ext_resource type="AudioStream" uid="uid://dfq31b4q75f5x" path="res://assets/audio/wood-smash-4-170420.mp3" id="10_puqnl"]
@@ -102,22 +102,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("ExplosionSound:playing")
+tracks/6/path = NodePath("DestructiveZone/DestructiveZoneCollision:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("DestructiveZone/DestructiveZoneCollision:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -203,36 +191,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("ExplosionSound:playing")
+tracks/6/path = NodePath("DestructiveZone/DestructiveZoneCollision:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_small_explosion"
-}]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("DestructiveZone/DestructiveZoneCollision:disabled")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -244,192 +206,6 @@ _data = {
 &"RESET": SubResource("Animation_mfu5d"),
 &"explode": SubResource("Animation_6ymvw")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4uhvr"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7nit"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1467"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tw32"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bnexv"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfu5d"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_puqnl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4uhvr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g7nit")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v1467")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7tw32")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bnexv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mfu5d")
-}],
-"loop": false,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_njivx"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0b3x"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgejv"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_puqnl"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ngchv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_njivx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0b3x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgejv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_puqnl")
-}],
-"loop": false,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7h0uh"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_66pwo"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3ip1"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0cae8"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6sng"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngchv"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_npxnp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7h0uh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_66pwo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l3ip1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0cae8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6sng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ngchv")
-}],
-"loop": false,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukm3w"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htg45"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rynw3"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8ijm"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(128, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_st787"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(160, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_npxnp"]
-atlas = ExtResource("7_mfu5d")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lj5h0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ukm3w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htg45")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rynw3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d8ijm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_st787")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_npxnp")
-}],
-"loop": false,
-"name": &"default",
-"speed": 12.0
-}]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g0b3x"]
 random_pitch = 1.2
@@ -447,6 +223,8 @@ collision_mask = 7
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_7tw32")
 gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 2.0
 script = ExtResource("1_6ymvw")
 
 [node name="BoxSprite" type="Sprite2D" parent="."]
@@ -485,23 +263,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_4uhvr")
 }
 
-[node name="SmallExplosion" type="Node2D" parent="."]
-visible = false
-z_index = 2
-
-[node name="Dust" type="AnimatedSprite2D" parent="SmallExplosion"]
-sprite_frames = SubResource("SpriteFrames_puqnl")
-frame = 5
-frame_progress = 1.0
-
-[node name="Trail1" type="AnimatedSprite2D" parent="SmallExplosion"]
-sprite_frames = SubResource("SpriteFrames_ngchv")
-
-[node name="Trail2" type="AnimatedSprite2D" parent="SmallExplosion"]
-sprite_frames = SubResource("SpriteFrames_npxnp")
-
-[node name="Puff" type="AnimatedSprite2D" parent="SmallExplosion"]
-sprite_frames = SubResource("SpriteFrames_lj5h0")
+[node name="SmallExplosion" parent="." node_paths=PackedStringArray("audio_stream_player") instance=ExtResource("7_7tw32")]
+audio_stream_player = NodePath("../ExplosionSound")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_g0b3x")
