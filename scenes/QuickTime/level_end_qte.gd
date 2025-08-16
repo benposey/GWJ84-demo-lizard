@@ -8,7 +8,7 @@ extends Node2D
 @onready var time_bar_for_qte: ProgressBar = $time_bar_for_qte
 @onready var qte_multiplier_text: RichTextLabel = $QTE_multiplier_text
 
-#const TEXT_FORMAT = "[shake rate=%d level=%d connected=1][color=%s]%s[/color][shake] "
+const TEXT_FORMAT = "[shake rate=%f level=%d connected=1][color=%s]%dx[/color][/shake]"
 
 var level_completion_time_sec = 0.0
 var level_completion_objects_destroyed = 0
@@ -16,14 +16,12 @@ var player_score = 0
 var button_press_count = 0.0
 var incrementRate = 0.1
 var qte_multiplier = 0.0
-#var color_weight = 0.0
 
-#var white = Color(1,1,1,1)
-#var crimson = Color(0.862745, 0.0784314, 0.235294, 1)
+
 
 func _process(delta: float) -> void:
 	time_bar_for_qte.value = qte_timer.time_left
-	print("time_bar_for_qte ", time_bar_for_qte.value)
+
 
 func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destoryed: int):
 	AudioManager.start_qte()
@@ -35,15 +33,13 @@ func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destor
 	# QTE logic
 	self.show()	
 	instructions.show()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	instructions.hide()
 	qte_multiplier_text.show()
 	button_press_count = 1.0
 	qte_timer.start()
 	qte_multiplier_text.text = "10x"
 	
-	#todo add shake juice
-	#todo add color juice, figure out LERP not working
 	
 func _input(event):
 	if event.is_action_pressed("detonate"):
@@ -53,12 +49,14 @@ func _input(event):
 		red_button.speed_scale = button_press_count
 		button_press_count += incrementRate
 		lizard_sound.play()		
-		qte_multiplier = 10*button_press_count
-		#color_weight = button_press_count/10
-		#color_weight = clampf(button_press_count, 0.0, 1.0)
-		#qte_multiplier_text.push_color(white.lerp(crimson, color_weight))
-		#qte_multiplier_text.pop()
-		qte_multiplier_text.text = str(qte_multiplier) + "x"
+		qte_multiplier = ceil(10*button_press_count)
+		
+		var color_weight = clampf(button_press_count/10, 0.0, 1.0)
+		var interpolated_color = Color.WHITE.lerp(Color.CRIMSON, color_weight)
+		
+		var shake_rate = lerp(0.0, 20.0, button_press_count/5.0)
+		var shake_level = button_press_count*2
+		qte_multiplier_text.text = TEXT_FORMAT % [shake_rate, shake_level, interpolated_color.to_html(), qte_multiplier]
 		
 func _ready():
 	#listen for timer end signal

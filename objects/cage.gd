@@ -41,6 +41,7 @@ func destroy():
 		# Screen effects
 		Events.camera.add_trauma.emit(TRAUMA_FACTOR)
 		Events.objects.object_destroyed.emit(point_value, self.global_position)
+		Events.objects.objective_item_destroyed.emit()
 		
 		# Animation/Sound
 		small_explosion.play_explosion()

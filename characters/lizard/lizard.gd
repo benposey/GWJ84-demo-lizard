@@ -191,7 +191,6 @@ func _destroy_bodies_in_range():
 			body.destroy()
 
 func _on_combo_changed(_new_multiplier):
-	print("adjusting speed", ComboManager.Combo_PlayerSpeed)
 	self.SPEED = ComboManager.Combo_PlayerSpeed
 
 
