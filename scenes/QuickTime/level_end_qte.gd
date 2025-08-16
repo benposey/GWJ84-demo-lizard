@@ -8,7 +8,7 @@ extends Node2D
 @onready var time_bar_for_qte: ProgressBar = $time_bar_for_qte
 @onready var qte_multiplier_text: RichTextLabel = $QTE_multiplier_text
 
-const TEXT_FORMAT = "[color=%s]%dx[/color]"
+const TEXT_FORMAT = "[shake rate=%f level=%d connected=1][color=%s]%dx[/color][/shake]"
 
 var level_completion_time_sec = 0.0
 var level_completion_objects_destroyed = 0
@@ -16,7 +16,6 @@ var player_score = 0
 var button_press_count = 0.0
 var incrementRate = 0.1
 var qte_multiplier = 0.0
-#var color_weight = 0.0
 
 
 
@@ -42,7 +41,6 @@ func _on_end_of_level(score: int, level_complete_time_sec: float, objects_destor
 	qte_multiplier_text.text = "10x"
 	
 	#todo add shake juice
-	#todo add color juice, figure out LERP not working
 	
 func _input(event):
 	if event.is_action_pressed("detonate"):
@@ -56,7 +54,10 @@ func _input(event):
 		
 		var color_weight = clampf(button_press_count/10, 0.0, 1.0)
 		var interpolated_color = Color.WHITE.lerp(Color.CRIMSON, color_weight)
-		qte_multiplier_text.text = TEXT_FORMAT % [interpolated_color.to_html(), qte_multiplier]
+		
+		var shake_rate = lerp(0.0, 20.0, button_press_count/5.0)
+		var shake_level = button_press_count*2
+		qte_multiplier_text.text = TEXT_FORMAT % [shake_rate, shake_level, interpolated_color.to_html(), qte_multiplier]
 		
 func _ready():
 	#listen for timer end signal
