@@ -740,6 +740,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("24_e7vmk")
 
+[node name="HighCombo" type="ColorRect" parent="FixedUI"]
+visible = false
+offset_right = 320.0
+offset_bottom = 181.0
+color = Color(0.615686, 0.0823529, 0, 0.294118)
+
 [node name="MainObjectiveItems" type="Node2D" parent="."]
 
 [node name="Cage" parent="MainObjectiveItems" instance=ExtResource("24_au7bp")]
