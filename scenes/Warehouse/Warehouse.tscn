@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bysu4q8oaqvyn" path="res://assets/environment/EndTable.png" id="20_20cbv"]
 [ext_resource type="Script" uid="uid://bm2dnaegduk05" path="res://scenes/Warehouse/Stopwatch.gd" id="23_fdhiv"]
 [ext_resource type="PackedScene" uid="uid://bybnkhvl8yrpl" path="res://objects/cage.tscn" id="24_au7bp"]
-[ext_resource type="Script" uid="uid://trb1s01s0evw" path="res://scenes/Warehouse/eol_countdown.gd" id="24_e7vmk"]
+[ext_resource type="Script" path="res://scenes/Warehouse/eol_countdown.gd" id="24_e7vmk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
 noise_type = 3

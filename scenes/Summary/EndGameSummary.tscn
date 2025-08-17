@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vbwv28fio2uf"]
 
-[ext_resource type="Texture2D" uid="uid://btnr7bg61fhqt" path="res://assets/bg/3257.jpg" id="1_ab1w0"]
 [ext_resource type="Script" uid="uid://bkbln8laswg1b" path="res://scenes/Summary/end_game_summary.gd" id="1_mrj13"]
+[ext_resource type="Texture2D" uid="uid://djb8dn1tvc0ro" path="res://assets/bg/sunset4.png" id="2_mrj13"]
 
 [sub_resource type="GDScript" id="GDScript_ubnvx"]
 resource_name = "title_label"
@@ -34,16 +34,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mrj13")
 
-[node name="EndSceneBackground" type="Sprite2D" parent="."]
-position = Vector2(64, 92.375)
-scale = Vector2(0.0731429, 0.0785469)
-texture = ExtResource("1_ab1w0")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.250324, 0.247891)
+texture = ExtResource("2_mrj13")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 176.0
-color = Color(0, 0, 0, 0.65098)
+color = Color(0, 0, 0, 0.137255)
 
 [node name="StatElements" type="Control" parent="."]
 anchors_preset = 0

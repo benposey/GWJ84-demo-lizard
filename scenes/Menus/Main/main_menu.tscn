@@ -2,28 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy67yg1ifx3v8" path="res://scenes/Menus/Main/main_menu.gd" id="1_8gy84"]
 [ext_resource type="PackedScene" uid="uid://fcihoj66ahhi" path="res://scenes/Menus/Options/options_menu.tscn" id="2_1bmg3"]
-
-[sub_resource type="GDScript" id="GDScript_kvqlu"]
-resource_name = "title_label"
-script/source = "@tool
-extends Label
-class_name ConfigNameLabel
-## Displays the value of `application/config/name`, set in project settings.
-
-const NO_NAME_STRING : String = \"Title\"
-
-@export var auto_update : bool = true
-
-func update_name_label():
-	var config_name : String = ProjectSettings.get_setting(\"application/config/name\", NO_NAME_STRING)
-	if config_name.is_empty():
-		config_name = NO_NAME_STRING
-	text = config_name
-
-func _ready():
-	if auto_update:
-		update_name_label()
-"
+[ext_resource type="Texture2D" uid="uid://c1xq34vt788el" path="res://assets/bg/sunset1.png" id="2_7qjmm"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -33,6 +12,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8gy84")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.249738, 0.250937)
+texture = ExtResource("2_7qjmm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -47,13 +33,6 @@ theme_override_constants/separation = 64
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_top = 16
-
-[node name="TitleLabel" type="Label" parent="VBoxContainer/TitleContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Demo Lizard"
-script = SubResource("GDScript_kvqlu")
 
 [node name="ButtonsContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
