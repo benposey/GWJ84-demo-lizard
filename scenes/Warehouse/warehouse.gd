@@ -10,6 +10,7 @@ extends Node2D
 var objective_count = 0
 var total_object_destroyed_count = 0
 var objective_items_destroyed = 0
+var horses_collected
 
 
 const DEFAULT_COMBO = 1

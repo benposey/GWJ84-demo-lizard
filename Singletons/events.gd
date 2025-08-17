@@ -9,6 +9,7 @@ var combos = ComboEvents.new()
 class ObjectEvents:
 	signal object_destroyed(point_value: int, position:Vector2)
 	signal objective_item_destroyed()
+	signal horse_collected()
 
 class MenuEvents:
 	signal paused()

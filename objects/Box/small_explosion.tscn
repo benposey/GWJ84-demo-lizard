@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://j6vb81e7xr0l"]
 
-[ext_resource type="Script" uid="uid://by7oq8pf8g6d6" path="res://objects/small_explosion.gd" id="1_hix86"]
+[ext_resource type="Script" uid="uid://by7oq8pf8g6d6" path="res://objects/Box/small_explosion.gd" id="1_hix86"]
 [ext_resource type="Texture2D" uid="uid://c6fe7t3va3op2" path="res://assets/sprites/small_explosion.png" id="1_oboq3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4uhvr"]

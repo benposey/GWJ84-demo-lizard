@@ -1,10 +1,10 @@
 [gd_scene load_steps=21 format=3 uid="uid://bybnkhvl8yrpl"]
 
-[ext_resource type="Script" uid="uid://p4anmobmesnc" path="res://objects/cage.gd" id="1_7upp4"]
+[ext_resource type="Script" uid="uid://p4anmobmesnc" path="res://objects/Cage/cage.gd" id="1_7upp4"]
 [ext_resource type="Texture2D" uid="uid://d0m1yqlx1ev2e" path="res://assets/sprites/lizard-cage-sheet.png" id="2_atoxe"]
 [ext_resource type="Material" uid="uid://gj6pj7gp8kb2" path="res://resources/debris_particles.tres" id="3_atoxe"]
 [ext_resource type="Texture2D" uid="uid://cvucarop5aepn" path="res://assets/sprites/lizard-cage-parts-sheet.png" id="3_wa1vt"]
-[ext_resource type="PackedScene" uid="uid://j6vb81e7xr0l" path="res://objects/small_explosion.tscn" id="4_v3k8q"]
+[ext_resource type="PackedScene" uid="uid://j6vb81e7xr0l" path="res://objects/Box/small_explosion.tscn" id="4_v3k8q"]
 [ext_resource type="Material" uid="uid://cugcjwmwqme8w" path="res://resources/debris_long_particles.tres" id="4_wa1vt"]
 [ext_resource type="AudioStream" uid="uid://bbwyrw12jv70q" path="res://assets/audio/metal-pipe.wav" id="7_acm08"]
 
