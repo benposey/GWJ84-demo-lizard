@@ -8,7 +8,7 @@ extends Control
 @onready var horses_found_label: RichTextLabel = $StatElements/HorsesFound
 
 # Ranks
-const RANKING_BASELINE := 150000
+const RANKING_BASELINE := 2000000
 const QUIET_CHAMELEON = "QUIET CHAMELEON"
 const MUNDANE_MONITOR = "MUNDANE MONITOR"
 const KILLER_KOMODO = "KILLER KOMODO"

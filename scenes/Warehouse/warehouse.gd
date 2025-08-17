@@ -4,6 +4,7 @@ extends Node2D
 @onready var spawnables: TileMapLayer = $LayerHolder/Spawnables
 @onready var point_counter: RichTextLabel = $FixedUI/PointCounter
 @onready var eol_countdown: EOLCountdown = $FixedUI/EOLCountdown
+@onready var objective_tracker: Label = $FixedUI/ObjectiveTracker
 
 
 var objective_count = 0
@@ -25,6 +26,7 @@ func _ready() -> void:
 	for child in spawnables.get_children():
 		if child is Cage:
 			objective_count += 1
+	objective_tracker.set_required_objectives(objective_count)
 
 
 func _input(event):
