@@ -6,6 +6,7 @@ extends Node2D
 @onready var main_objective_items: Node2D = $MainObjectiveItems
 @onready var eol_countdown: EOLCountdown = $FixedUI/EOLCountdown
 
+
 var destroyable_count = 0
 var objective_count = 0
 var total_object_destroyed_count = 0
