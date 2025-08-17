@@ -35,10 +35,12 @@ func _on_object_destroyed(_point_value, _position):
 	var time_remaining = combo_bar.time_left
 	combo_bar.start(time_remaining + ComboManager.Combo_IncreaseRate)
 	total_object_destroyed_count += 1
-	if total_object_destroyed_count == 1:
-		# start the stopwatch ONLY on the first object destroyed 
-		stopwatch.start()
-	
+
+
+func _on_player_enter_game_area() -> void:
+	# game has started 
+	stopwatch.start()
+
 
 func _on_pause_button_pressed() -> void:
 	Events.menus.paused.emit()
@@ -56,5 +58,10 @@ func _on_level_ended_timer_expired() -> void:
 	stopwatch.hide()
 	eol_countdown.stop()
 	eol_countdown.hide()
-	Events.level.level_ended.emit(point_counter.current_points, stopwatch.timer, total_object_destroyed_count) 
-	
+	Events.level.level_ended.emit(point_counter.current_points, stopwatch.timer, total_object_destroyed_count)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		Events.level.player_entered_game_area.emit()
+		stopwatch.start()
