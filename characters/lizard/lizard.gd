@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var tongue_suck_layer: AudioStreamPlayer2D = $Audio/TongueSuckLayer
 @onready var tongue_shoot: AudioStreamPlayer2D = $Audio/TongueShoot
 @onready var tongue_shoot_layer: AudioStreamPlayer2D = $Audio/TongueShootLayer
+@onready var punch: AudioStreamPlayer2D = $Audio/Punch
 
 enum TongueState {
 	In,
@@ -34,6 +35,7 @@ const RETRACT_TONGUE_TIME: float = 0.1
 
 var SPEED: float = 100.0
 var can_move: bool = true
+var can_attack: bool = true
 var is_attacking: bool = false
 var is_dashing: bool = false
 var can_dash: bool = true
@@ -50,9 +52,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
-	
-	#print(attack_area.get_overlapping_areas())
-	#print(attack_area.get_overlapping_bodies())
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		can_dash = false
@@ -145,17 +144,18 @@ func _draw():
 		draw_circle(tongue_target, 2, "#ac76a5")
 			
 func _input(event):
-	if !is_attacking && event.is_action_pressed("attack"):
+	if !is_attacking && event.is_action_pressed("attack") and can_attack:
 		attack()
-	if !is_attacking && tongue_state == TongueState.In && event.is_action_pressed("grab"):
+	if !is_attacking && tongue_state == TongueState.In && event.is_action_pressed("grab") and can_attack:
 		grab()
-	if tongue_state == TongueState.PullingObject && event.is_action_released("grab"):
+	if tongue_state == TongueState.PullingObject && event.is_action_released("grab") and can_attack:
 		shoot_grabbed_object()
 		
 func attack():
 	is_attacking = true
 	var animation_name = ["attack1", "attack2"].pick_random() # TODO: combo attack sequence
 	arms.play(animation_name)
+	punch.play()
 	_destroy_bodies_in_range()
 	await(arms.animation_finished)
 	is_attacking = false
@@ -205,3 +205,5 @@ func _on_dash_cooldown_timeout() -> void:
 
 func _on_level_ended(_score, _stopwatch_time_sec, _objects_destroyed) -> void: 
 	can_move = false
+	can_attack = false
+	velocity = Vector2(0.0,0.0)
