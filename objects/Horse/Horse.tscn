@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://0nt5ncxrkp5t"]
+
+[ext_resource type="Script" uid="uid://q15do5ne3tdw" path="res://objects/Horse/horse.gd" id="1_ngofl"]
+[ext_resource type="Texture2D" uid="uid://b2pagau6hkjbm" path="res://assets/sprites/horse_sprite.png" id="2_wns56"]
+[ext_resource type="AudioStream" uid="uid://bt8rv87i3f278" path="res://assets/audio/mouthhorse.mp3" id="3_wns56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1623e"]
+atlas = ExtResource("2_wns56")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w22hr"]
+atlas = ExtResource("2_wns56")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5eqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1623e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w22hr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1h14"]
+size = Vector2(16, 15)
+
+[node name="Horse" type="Node2D"]
+script = ExtResource("1_ngofl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_s5eqc")
+frame_progress = 0.468356
+
+[node name="HorseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HorseArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_l1h14")
+
+[node name="HorseNoises" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wns56")
+
+[connection signal="body_entered" from="HorseArea" to="." method="_on_horse_area_body_entered"]

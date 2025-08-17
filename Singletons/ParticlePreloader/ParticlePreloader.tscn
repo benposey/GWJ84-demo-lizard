@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6olqw8jbydsi"]
 
 [ext_resource type="Script" uid="uid://cyd5f7kbei2c5" path="res://Singletons/ParticlePreloader/particle_preloader.gd" id="1_65gkl"]
-[ext_resource type="PackedScene" uid="uid://vhguvlrn5tsr" path="res://objects/box.tscn" id="2_ihuft"]
+[ext_resource type="PackedScene" uid="uid://vhguvlrn5tsr" path="res://objects/Box/box.tscn" id="2_ihuft"]
 
 [node name="ParticlePreloader" type="Node2D"]
 script = ExtResource("1_65gkl")

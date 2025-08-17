@@ -8,7 +8,7 @@ extends Control
 @onready var horses_found_label: RichTextLabel = $StatElements/HorsesFound
 
 # Ranks
-const RANKING_BASELINE := 150000
+const RANKING_BASELINE := 2000000
 const QUIET_CHAMELEON = "QUIET CHAMELEON"
 const MUNDANE_MONITOR = "MUNDANE MONITOR"
 const KILLER_KOMODO = "KILLER KOMODO"
@@ -26,7 +26,7 @@ func _ready() -> void:
 	time_lable.text =  String.num(GameStats.Stats_Time, 3)
 	qte_multiplier_label.text = "%dx" % GameStats.Stats_QTE_Multiplier
 	objects_destroyed_count_label.text = str(GameStats.Stats_Objects_Destroyed)	
-	horses_found_label.text = str(GameStats.Stats_Horses_Found)
+	horses_found_label.text = "%d of 3" % GameStats.Stats_Horses_Found
 	
 	await get_tree().create_timer(3.0).timeout
 	AudioManager.music_play("End")
