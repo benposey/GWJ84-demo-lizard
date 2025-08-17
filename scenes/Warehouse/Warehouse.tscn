@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=71 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bybnkhvl8yrpl" path="res://objects/cage.tscn" id="24_au7bp"]
 [ext_resource type="Script" uid="uid://trb1s01s0evw" path="res://scenes/Warehouse/eol_countdown.gd" id="24_e7vmk"]
 [ext_resource type="AudioStream" uid="uid://dy2w5q71k1vif" path="res://assets/audio/DemoLizard.wav" id="26_sfawo"]
+[ext_resource type="Script" uid="uid://cu54tona4rsl0" path="res://scenes/Warehouse/objective_tracker.gd" id="26_tbwci"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
 noise_type = 3
@@ -597,7 +598,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_iao1r")
 
 [sub_resource type="LabelSettings" id="LabelSettings_20cbv"]
 font_size = 23
-outline_size = 1
+outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sfawo"]
@@ -605,6 +606,10 @@ font_size = 47
 font_color = Color(1, 1, 1, 0.266667)
 outline_size = 2
 outline_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbwci"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7vmk"]
 size = Vector2(191, 20)
@@ -656,9 +661,14 @@ tile_set = SubResource("TileSet_4uu43")
 layer = 5
 
 [node name="PointCounter" type="RichTextLabel" parent="FixedUI"]
+anchors_preset = -1
+anchor_right = 0.121875
 offset_left = 9.0
 offset_right = 49.0
 offset_bottom = 40.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "100000000"
 script = ExtResource("14_h115g")
 metadata/_edit_use_anchors_ = true
 
@@ -673,7 +683,10 @@ offset_bottom = 101.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 bbcode_enabled = true
+text = "8x"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -747,6 +760,22 @@ label_settings = SubResource("LabelSettings_sfawo")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("24_e7vmk")
+
+[node name="ObjectiveTracker" type="Label" parent="FixedUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.5
+offset_top = -36.0
+offset_right = 44.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "5/7 Lizards Freed"
+label_settings = SubResource("LabelSettings_tbwci")
+script = ExtResource("26_tbwci")
 
 [node name="HighCombo" type="ColorRect" parent="FixedUI"]
 visible = false
