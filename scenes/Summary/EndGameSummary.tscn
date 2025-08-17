@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://vbwv28fio2uf"]
+[gd_scene load_steps=6 format=3 uid="uid://vbwv28fio2uf"]
 
 [ext_resource type="Script" uid="uid://bkbln8laswg1b" path="res://scenes/Summary/end_game_summary.gd" id="1_mrj13"]
 [ext_resource type="Texture2D" uid="uid://djb8dn1tvc0ro" path="res://assets/bg/sunset4.png" id="2_mrj13"]
+[ext_resource type="AudioStream" uid="uid://b6a5wfq03b2t1" path="res://assets/audio/qte/level-end-explosion.wav" id="3_y7ubu"]
+[ext_resource type="AudioStream" uid="uid://b6pkkx8257t2u" path="res://assets/audio/music/end-theme.wav" id="4_a885f"]
 
 [sub_resource type="GDScript" id="GDScript_ubnvx"]
 resource_name = "title_label"
@@ -201,5 +203,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Main Menu"
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_y7ubu")
+
+[node name="end-theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a885f")
 
 [connection signal="pressed" from="ButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

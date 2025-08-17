@@ -7,6 +7,7 @@ extends Node2D
 @onready var instructions: RichTextLabel = $Instructions
 @onready var time_bar_for_qte: ProgressBar = $time_bar_for_qte
 @onready var qte_multiplier_text: RichTextLabel = $QTE_multiplier_text
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 const TEXT_FORMAT = "[shake rate=%f level=%d connected=1][color=%s]%dx[/color][/shake]"
 
@@ -66,4 +67,5 @@ func _ready():
 
 func _on_qte_timer_timeout() -> void:	
 	Events.level.qte_ended.emit(player_score, level_completion_time_sec, level_completion_objects_destroyed, qte_multiplier)
+	audio_stream_player.stop()
 	get_tree().change_scene_to_file("res://scenes/Summary/EndGameSummary.tscn")
