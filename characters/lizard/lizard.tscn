@@ -394,6 +394,7 @@ bus = &"SFX"
 [node name="Punch" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_heuym")
 volume_db = 7.156
+bus = &"SFX"
 
 [node name="DashControls" type="Control" parent="."]
 layout_mode = 3

@@ -5,7 +5,6 @@ extends Node2D
 @onready var point_counter: RichTextLabel = $FixedUI/PointCounter
 @onready var main_objective_items: Node2D = $MainObjectiveItems
 @onready var eol_countdown: EOLCountdown = $FixedUI/EOLCountdown
-@onready var high_combo: ColorRect = $FixedUI/HighCombo
 
 
 var destroyable_count = 0
@@ -22,7 +21,6 @@ func _ready() -> void:
 	Events.objects.object_destroyed.connect(_on_object_destroyed)
 	Events.objects.objective_item_destroyed.connect(_on_objective_item_destroyed)
 	Events.level.level_end_countdown_completed.connect(_on_level_ended_timer_expired)
-	Events.combos.combo_changed.connect(_on_combo_changed)
 	await get_tree().process_frame
 	destroyable_count = spawnables.get_child_count()
 	objective_count = main_objective_items.get_child_count()	
@@ -68,9 +66,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		Events.level.player_entered_game_area.emit()
 		stopwatch.start()
-
-func _on_combo_changed(multiplier):
-	if multiplier == 8:
-		high_combo.show()
-	else:
-		high_combo.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=68 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://bm2dnaegduk05" path="res://scenes/Warehouse/Stopwatch.gd" id="23_fdhiv"]
 [ext_resource type="PackedScene" uid="uid://bybnkhvl8yrpl" path="res://objects/cage.tscn" id="24_au7bp"]
 [ext_resource type="Script" uid="uid://trb1s01s0evw" path="res://scenes/Warehouse/eol_countdown.gd" id="24_e7vmk"]
+[ext_resource type="AudioStream" uid="uid://dy2w5q71k1vif" path="res://assets/audio/DemoLizard.wav" id="26_sfawo"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
 noise_type = 3
@@ -756,6 +757,13 @@ position = Vector2(272, -98)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(216, 290)
 shape = SubResource("RectangleShape2D_e7vmk")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="DemoLizardAudio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("26_sfawo")
+volume_db = 20.0
+bus = &"SFX"
 
 [connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
