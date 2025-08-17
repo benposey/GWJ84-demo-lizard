@@ -3,11 +3,9 @@ extends Node2D
 @onready var stopwatch: Stopwatch = $FixedUI/Stopwatch
 @onready var spawnables: TileMapLayer = $LayerHolder/Spawnables
 @onready var point_counter: RichTextLabel = $FixedUI/PointCounter
-@onready var main_objective_items: Node2D = $MainObjectiveItems
 @onready var eol_countdown: EOLCountdown = $FixedUI/EOLCountdown
 
 
-var destroyable_count = 0
 var objective_count = 0
 var total_object_destroyed_count = 0
 var objective_items_destroyed = 0
@@ -22,8 +20,11 @@ func _ready() -> void:
 	Events.objects.objective_item_destroyed.connect(_on_objective_item_destroyed)
 	Events.level.level_end_countdown_completed.connect(_on_level_ended_timer_expired)
 	await get_tree().process_frame
-	destroyable_count = spawnables.get_child_count()
-	objective_count = main_objective_items.get_child_count()	
+	
+	# Allow mulitple lizard cages to be spawned without knowing where/manually placing them
+	for child in spawnables.get_children():
+		if child is Cage:
+			objective_count += 1
 
 
 func _input(event):
