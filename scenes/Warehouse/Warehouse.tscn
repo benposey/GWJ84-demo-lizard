@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://dy2w5q71k1vif" path="res://assets/audio/DemoLizard.wav" id="26_sfawo"]
 [ext_resource type="Script" uid="uid://cu54tona4rsl0" path="res://scenes/Warehouse/objective_tracker.gd" id="26_tbwci"]
 
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
 noise_type = 3
 seed = 420
