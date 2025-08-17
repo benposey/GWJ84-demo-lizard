@@ -10,7 +10,7 @@ func _input(event: InputEvent) -> void:
 		options_menu.hide()
 	
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Warehouse/Warehouse.tscn")
+	get_tree().change_scene_to_file("res://scenes/Cutscenes/exposition_scene.tscn")
 	
 
 func _on_options_button_pressed() -> void:
