@@ -48,7 +48,7 @@ func _input(event):
 		lizard_qte.speed_scale = button_press_count
 		red_button.speed_scale = button_press_count
 		button_press_count += incrementRate
-		lizard_sound.play()		
+		lizard_sound.play()
 		qte_multiplier = ceil(10*button_press_count)
 		
 		var color_weight = clampf(button_press_count/10, 0.0, 1.0)

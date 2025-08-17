@@ -33,6 +33,7 @@ const MAX_TONGUE_TIME: float = 0.4
 const RETRACT_TONGUE_TIME: float = 0.1
 
 var SPEED: float = 100.0
+var can_move: bool = true
 var is_attacking: bool = false
 var is_dashing: bool = false
 var can_dash: bool = true
@@ -45,6 +46,7 @@ var tongue_timer: float = 0.0
 func _ready() -> void:
 	head.play("default")
 	Events.combos.combo_changed.connect(_on_combo_changed)
+	Events.level.level_ended.connect(_on_level_ended)
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -74,11 +76,11 @@ func _physics_process(delta: float) -> void:
 	var angle = (get_global_mouse_position() - body_parts.global_position).angle()
 	body_parts.global_rotation = lerp_angle(body_parts.global_rotation, angle, 5 * delta)
 	arms.global_rotation = lerp_angle(body_parts.global_rotation, angle, 25 * delta)
-	
-	if is_dashing:
-		velocity = direction * DASH_SPEED
-	else:
-		velocity = direction * SPEED
+	if can_move:
+		if is_dashing:
+			velocity = direction * DASH_SPEED
+		else:
+			velocity = direction * SPEED
 	move_and_slide()
 
 func handle_tongue(delta: float) -> void:
@@ -200,3 +202,6 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
+
+func _on_level_ended(_score, _stopwatch_time_sec, _objects_destroyed) -> void: 
+	can_move = false
