@@ -6,6 +6,8 @@ extends Control
 @onready var qte_multiplier_label: RichTextLabel = $StatElements/QTEMultiplier
 @onready var objects_destroyed_count_label: RichTextLabel = $StatElements/ObjectDestroyedCount
 @onready var horses_found_label: RichTextLabel = $StatElements/HorsesFound
+@onready var explosion: AudioStreamPlayer = $explosion
+@onready var end_theme: AudioStreamPlayer = $"end-theme"
 
 # Ranks
 const RANKING_BASELINE := 2000000
@@ -19,6 +21,7 @@ const DEMO_LIZARD = "DEMO LIZARD"
 func _ready() -> void:
 	var final_score = GameStats.Stats_Score * GameStats.Stats_QTE_Multiplier
 	
+	explosion.play()
 	AudioManager.sfx_play()
 	final_score_label.text = "FINAL SCORE: %d" % final_score
 	rank_label.text = assign_rank(final_score)
@@ -29,7 +32,7 @@ func _ready() -> void:
 	horses_found_label.text = "%d of 3" % GameStats.Stats_Horses_Found
 	
 	await get_tree().create_timer(3.0).timeout
-	AudioManager.music_play("End")
+	end_theme.play()
 	
 func assign_rank(score) -> String:
 	if score <= RANKING_BASELINE:
@@ -49,5 +52,4 @@ func assign_rank(score) -> String:
 		return DEMO_LIZARD
 
 func _on_main_menu_button_pressed() -> void:
-	AudioManager.music_play("Intro")
 	get_tree().change_scene_to_file("res://scenes/Menus/Main/main_menu.tscn")

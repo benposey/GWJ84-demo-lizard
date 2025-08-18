@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://086y5r45su6x"]
+[gd_scene load_steps=5 format=3 uid="uid://086y5r45su6x"]
 
 [ext_resource type="Script" uid="uid://cy67yg1ifx3v8" path="res://scenes/Menus/Main/main_menu.gd" id="1_8gy84"]
 [ext_resource type="PackedScene" uid="uid://fcihoj66ahhi" path="res://scenes/Menus/Options/options_menu.tscn" id="2_1bmg3"]
 [ext_resource type="Texture2D" uid="uid://c1xq34vt788el" path="res://assets/bg/sunset1.png" id="2_7qjmm"]
+[ext_resource type="AudioStream" uid="uid://ci25mqojoh8ga" path="res://assets/audio/music/theme-1-loop.wav" id="5_fm742"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,6 +53,11 @@ text = "Options"
 [node name="OptionsMenu" parent="." instance=ExtResource("2_1bmg3")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fm742")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/ButtonsContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonsContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

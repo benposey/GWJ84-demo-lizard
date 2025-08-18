@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://i2mfct4onoo3"]
+[gd_scene load_steps=12 format=3 uid="uid://i2mfct4onoo3"]
 
 [ext_resource type="Texture2D" uid="uid://c7j3tajgn5p7" path="res://assets/bg/zoompattern.png" id="1_exxvv"]
 [ext_resource type="PackedScene" uid="uid://b7wplqfop7hd7" path="res://characters/lizard/lizard_qte.tscn" id="1_h7kg2"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dopvui3p3rq5k" path="res://assets/audio/qte/lizard-1-processed.wav" id="6_jlb60"]
 [ext_resource type="AudioStream" uid="uid://bw7e132ika7gq" path="res://assets/audio/qte/lizard-2-processed.wav" id="7_vhqqm"]
 [ext_resource type="AudioStream" uid="uid://bn3pmh7jy7v8l" path="res://assets/audio/qte/lizard-3-processed.wav" id="8_vhqqm"]
+[ext_resource type="AudioStream" uid="uid://b10q6cnt6bkwj" path="res://assets/audio/music/detonate-3.wav" id="9_lumnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_weem4"]
 shader = ExtResource("1_k4lbd")
@@ -103,5 +104,8 @@ bbcode_enabled = true
 text = "1X"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_lumnj")
 
 [connection signal="timeout" from="QTE_Timer" to="." method="_on_qte_timer_timeout"]

@@ -5,6 +5,7 @@ extends Node2D
 @onready var point_counter: RichTextLabel = $FixedUI/PointCounter
 @onready var eol_countdown: EOLCountdown = $FixedUI/EOLCountdown
 @onready var objective_tracker: Label = $FixedUI/ObjectiveTracker
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 var objective_count = 0
@@ -63,6 +64,7 @@ func _on_level_ended_timer_expired() -> void:
 	stopwatch.hide()
 	eol_countdown.stop()
 	eol_countdown.hide()
+	audio_stream_player.stop()
 	Events.level.level_ended.emit(point_counter.current_points, stopwatch.timer, total_object_destroyed_count)
 
 

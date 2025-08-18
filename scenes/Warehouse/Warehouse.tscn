@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://bmmvypai2sn8m"]
+[gd_scene load_steps=73 format=4 uid="uid://bmmvypai2sn8m"]
 
 [ext_resource type="Script" uid="uid://b2lfq6x7lg0y8" path="res://scenes/Warehouse/warehouse.gd" id="1_ybp5e"]
 [ext_resource type="Texture2D" uid="uid://dl0aam6unj5hg" path="res://assets/environment/tile_136.png" id="2_h115g"]
@@ -28,7 +28,7 @@
 [ext_resource type="Script" uid="uid://trb1s01s0evw" path="res://scenes/Warehouse/eol_countdown.gd" id="24_e7vmk"]
 [ext_resource type="AudioStream" uid="uid://dy2w5q71k1vif" path="res://assets/audio/DemoLizard.wav" id="26_sfawo"]
 [ext_resource type="Script" uid="uid://cu54tona4rsl0" path="res://scenes/Warehouse/objective_tracker.gd" id="26_tbwci"]
-
+[ext_resource type="AudioStream" uid="uid://ci25mqojoh8ga" path="res://assets/audio/music/theme-1-loop.wav" id="29_4uu43"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cvm3i"]
 noise_type = 3
@@ -798,6 +798,11 @@ shape = SubResource("RectangleShape2D_e7vmk")
 stream = ExtResource("26_sfawo")
 volume_db = 20.0
 bus = &"SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_4uu43")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="FixedUI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
